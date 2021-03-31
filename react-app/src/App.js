@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
+import Splash from "./components/splash/SplashPage"
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
@@ -28,8 +29,11 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar setAuthenticated={setAuthenticated} />
+      {/* <NavBar setAuthenticated={setAuthenticated} /> */}
       <Switch>
+        <Route path="/" exact={true}>
+          <Splash />
+        </Route>
         <Route path="/login" exact={true}>
           <LoginForm
             authenticated={authenticated}

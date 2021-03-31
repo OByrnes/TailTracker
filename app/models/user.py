@@ -9,7 +9,7 @@ class User(db.Model, UserMixin):
   username = db.Column(db.String(40), nullable = False, unique = True)
   email = db.Column(db.String(255), nullable = False, unique = True)
   hashed_password = db.Column(db.String(255), nullable = False)
-  notebooks = db.relationship("Dog", backref='User', cascade="all, delete-orphan")
+  # dogs = db.relationship("Dog", backref='User', cascade="all, delete-orphan")
 
   @property
   def password(self):
