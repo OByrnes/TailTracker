@@ -1,0 +1,296 @@
+#splash-nav{
+    background-color:#50514F ;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    position: relative;
+}
+.splash-body__container{
+    background-color: #ffe0663d;
+}
+.login-demo__container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.splash-section0{
+    position: relative;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    height: 400px;
+}
+.boxerleft{
+    position:absolute;
+    right: 25%;
+    top: 30%;
+    min-width: 100px;
+    
+}
+.boxerright{
+    position:absolute;
+    left: 25%;
+    top: 30%;
+    transform: scaleX(-1);
+    min-width: 100px;
+    max-width: 100px;
+}
+.SignUpSplash__container{
+    border: 2px solid #F25F5C;
+    width: 500px;
+    margin: 15px;
+    padding: 16px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.SignUpSplash__container span{
+    color: #247ba0ff;
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+.signupbtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F25F5C;
+    width: 250px;
+    padding-top: 20px;
+    margin-bottom: 25px;
+    font-weight: bold;
+    color: black;
+}
+
+.SignUpSplash__container img{
+    max-width: 200px;
+    min-width: 80px;
+    max-height: 40px;
+}
+.SignUpSplash__container a{
+    text-decoration: none;
+}
+.SignUpSplash__container .header{
+    font-size: 45px;
+    font-weight: bold;
+    color: #247ba0ff;
+}
+.splashNavLogo-Name__container{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    margin: 10px;
+}
+.splashNavLogo-Name__container h1{
+    padding-left: 6px;
+    font-size: 25px;
+    color: #247ba0ff;
+    text-shadow: 1px 1px 2px #363636;
+}
+.hamburgerBtn{
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    height: 100%;
+}
+.hamburgerBtn img{
+   box-sizing: border-box;
+   padding: 10px;
+}
+.splash-body__container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.splashSidebar__container{
+    position: absolute;
+    right: 0px;
+    top: 95px;
+    width: 200px;
+    background-color: white;
+    list-style-type: none;
+    text-decoration: none;
+}
+.close_sidebar{
+    position: absolute;
+    right: 5px;
+    font-size: 20px;
+}
+.splashSidebar__container ul{
+    list-style-type: none;
+    text-decoration: none;
+    width: 100%;
+}
+.splashSidebar__container li{
+    font-size: 25px;
+    border-bottom: 1px solid gray;
+    width: 100%;
+}
+.splashSidebar__container a{
+    text-decoration: none;
+    
+}
+.splash-section1{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: center;
+}
+.feature__container{
+    padding: 25px;
+    background-color: #50514F;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 150px;
+    max-width: 300px;
+    min-height: 350px;
+    border: solid 2px #F25F5C;
+    
+}
+.feature__container img{
+    max-width: 350px;
+    min-width: 170px;
+    max-height: 250px;
+}
+.feature__container span{
+    font-size: 25px;
+    font-weight: bold;
+    color:#247ba0ff;
+    text-justify: center;
+}
+.splash-section2{
+    color:#247ba0ff;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.signs__container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.signs-img-text__container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.signClicker__Container{
+    display: flex;
+    flex-direction: row;
+    font-size: 13px;
+    height: 80px;
+}
+.signClicker__Container span{
+    display: flex;
+    align-items: center;
+    color:rgb(22, 74, 97);
+    background-color: #247ba0ff;
+    margin: 10px;
+    height: 30px;
+    padding: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.signClicker__Container span:hover{
+    font-size: 18px;
+    background-color: rgb(22, 74, 97);
+    color: white;
+}
+.signs__container img{
+    max-width: 400px;
+    margin: 30px;
+    border: 3px solid #FFE066;
+    background-color: #FFE066;
+}
+.signs__container p{
+    width: 25%;
+    background-color: white;
+    height: max-content;
+    padding: 25px;
+    border:1px solid #F25F5C;
+}
+.spiralpuppy{
+    position: absolute;
+    top: 50%;
+    left:10%;
+}
+footer{
+    background-color:#50514F ;
+    display: flex;
+    flex-direction: column;
+    height: 50px;
+    width: 100%;
+    bottom:0px
+}
+.modalInner {
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .ModalOverlay {
+    top: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100vw;
+    position: fixed;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    outline: none;
+  }
+  .closeIcoOuterShell {
+    width: 100%;
+    max-width: 512px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    text-decoration: none;
+    border: none;
+    outline: 0;
+    margin-bottom: -55px;
+    z-index: 55;
+  }
+  .closeIcoShell {
+    background-color: white;
+    text-decoration: none;
+    border: none;
+    outline: 0;
+    margin-right: 15px;
+  }
+  .closeIco {
+    font-size: 30px;
+    background-color: none;
+    outline: 0;
+    width: 40px;
+    color: gray;
+  }
+  .closeIco:hover {
+    cursor: pointer;
+    color: green;
+    outline: 0;
+  }
