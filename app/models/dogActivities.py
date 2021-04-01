@@ -10,5 +10,14 @@ class DogActivity(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     dog_id = db.Column(db.Integer, db.ForeignKey("dogs.id"), nullable=False)
     activityType_id = db.Column(db.Integer, db.ForeignKey("activity_types.id"), nullable=False)
-    date = db.Column(db.dateTime default=datetime.datetime.now())
+    minutes = db.Column(db.Integer, nullable=False)
+    date = db.Column(db.DateTime, default=datetime.datetime.now())
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "activityType": self.activityType_id,
+            "minutes": self.minutes,
+            "date": self.date
+            }
     

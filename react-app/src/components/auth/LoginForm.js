@@ -24,6 +24,7 @@ const LoginForm = ({
     e.preventDefault()
     let userAuthen = await dispatch(sessionActions.login(email,password))
     setErrors(userAuthen)
+
   };
   
   const signupButton = () => {
@@ -47,7 +48,9 @@ const LoginForm = ({
   })
 
   }
-
+  if (user){
+    return <Redirect to="/home"/>
+  }
 
   return (
     <div className="form_container">
@@ -60,7 +63,6 @@ const LoginForm = ({
       <form className="login_form" onSubmit={onLogin}>
 
         <div>
-          {/* <label htmlFor="email">Email</label> */}
           <input
             name="email"
             type="text"

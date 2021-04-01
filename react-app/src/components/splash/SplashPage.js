@@ -50,7 +50,17 @@ const Splash = () => {
     const demoLogin = () => {
         const user =  dispatch(sessionActions.login('demo@aa.io', "password"));
         setAuthenticated(true);
-    };   
+    };
+    if (user) {  
+
+      return (
+        <Redirect
+          to="/home"
+          // authenticated={authenticated}
+          // setAuthenticated={setAuthenticated}
+        />
+      );
+    } 
     
     return (
         <div className="splash__container">
