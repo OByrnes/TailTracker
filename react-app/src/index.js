@@ -5,17 +5,19 @@ import { Provider as ReduxProvider } from 'react-redux';
 import './index.css';
 import App from './App';
 import configureStore from './store';
+import ModalOpenProvider from './context/modalContext'
 
 const store = configureStore();
 
 function Root() {
   return (
-    
+    <ModalOpenProvider>
     <ReduxProvider store={store}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </ReduxProvider>
+    </ModalOpenProvider>
       
   )
 }

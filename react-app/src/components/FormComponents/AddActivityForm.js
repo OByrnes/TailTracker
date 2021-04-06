@@ -1,21 +1,87 @@
-import React, {useState} from "react"
+import React, {useEffect, useState} from "react"
+import { useHistory } from "react-router-dom"
+import { useSelector, useDispatch } from "react-redux"
 import "./index.css"
 import logo from "../../images/TTLogo1png.png";
+import { getAllActivityTypes } from "../../store/activityTypes";
 
 
 const AddanActivity = () => {
-    let activityTypes = [{type: "walk", exertion: 1},
-        {type: "jog", exertion: 1.5},
-        {type: "bike ride", exertion: 2},
-        {type: "dog_park", exertion: 1.5},
-        {type: "playtime with dog friends", exertion: 2},
-        {type: "playtime with human friends", exertion: 1},
-        {type: "hike", exertion: 1.3},
-        {type: "other", exertion: 1}]
-    const [activityType, setActivityType] = useState(activityTypes[0].type)
-    const [minutes, setMinutes] = useState(0)
-    const [date, setDate] = useState(Date.now())
-    const submitYourActivity = () => {
+    
+    const user = useSelector(state => state.session.user);
+    let dogs = user.dogs
+    const dispatch = useDispatch()
+    useEffect(()=>{
+        dispatch(getAllActivityTypes())
+    },[])
+
+    let activityTypes = useSelector(state => state.activityTypes?.activityTypes?.activityTypes)
+    let currentDate = new Date();
+    let month;
+    let dayDate;
+    if (currentDate.getDate() > 9){
+        dayDate = currentDate.getDate()
+    }else{
+        dayDate = `0${currentDate.getDate()}`
+    }
+    if (currentDate.getMonth() > 9){
+        month = currentDate.getMonth()
+    }else{
+        month = `0${currentDate.getMonth()}`
+    }
+    let curr = `${currentDate.getFullYear()}-${month}-${dayDate}T${currentDate.getHours()}:${currentDate.getMinutes()}`
+
+
+    const [activityType, setActivityType] = useState(1)
+    const [name, setName] = useState('')
+    const [minutes, setMinutes] = useState('')
+    const [date, setDate] = useState(curr)
+    const [dogsIds, setDogsIds] = useState([])
+    const [image, setImage] = useState(null);
+    const [imageLoading, setImageLoading] = useState(false);
+    const history = useHistory()
+    
+    const submitYourActivity = (e) => {
+        e.preventDefault()
+        
+        dogsIds.forEach( async dog_id =>{
+            let dateString = new Date(date).toLocaleString()
+        
+            let newActivity = new FormData()
+            newActivity.append('image',image )
+            newActivity.append('name', name)
+             newActivity.append("dog_id",dog_id)
+             newActivity.append("activityType_id",activityType)
+             newActivity.append("minutes",minutes)
+             newActivity.append("date", dateString)
+             
+            let res = await fetch("/api/activities", {
+                method: "POST",
+                body: newActivity
+            })
+            if (res.ok) {
+                await res.json()
+                history.push("/home")
+            }
+            else{
+                console.log("error")
+            }
+        })
+        
+    }
+    const updateImage = (e) => {
+        const file = e.target.files[0];
+        setImage(file);
+    }
+    const addAnotherDog = () => {
+       let array =[]
+       let dogs_in_activity= document.getElementsByClassName("dogCheck")
+       for (let i=0; i< dogs_in_activity.length; i++){
+         if(dogs_in_activity[i].checked){
+           array.push(dogs_in_activity[i].value)
+         }
+       } 
+       setDogsIds(array)
 
     }
     return (
@@ -27,20 +93,32 @@ const AddanActivity = () => {
 
             <form onSubmit={submitYourActivity}>
                 <div>
+                    <div>
+                    <fieldset onChange={addAnotherDog}>
+            {dogs.map((dog) => (<label key={dog.id}>{dog.name}<input className="dogCheck" type="checkbox" name="dogCheckbox" value={dog.id} key={dog.id}/> </label>))}
+          </fieldset>
+                    </div>
                     <select value={activityType} onChange={(e)=>setActivityType(e.target.value)}>
-                        {activityTypes.map(activity_type => (
-                            <option value={activity_type.type} key={activity_type.type}>{activity_type.type}</option>
-                        ))}
+                        {activityTypes? activityTypes.map(activity_type => (
+                            <option value={activity_type.id} key={activity_type.id}>{activity_type.type}</option>
+                        )):null}
                     </select>
+                </div>
+                <div>
+                <input type="file" name="activityImg" accept="image/*" onChange={updateImage}/>
                 </div>
                 <div>
                     <label>How long was the activity?</label>
                     <input type="number" name="minutes" value={minutes} onChange={(e)=>setMinutes(e.target.value)}/>
                 </div>
                 <div>
+                    <label>Give the activity a name</label>
+                    <input type="text" name='name' value={name} onChange={(e)=>setName(e.target.value)}/>
+                </div>
+                <div>
                     <input type="datetime-local" value={date} onChange={(e)=>setDate(e.target.value)} />
                 </div>
-                <button className="form__button" type="submit">Add your dog!</button>
+                <button className="form__button" type="submit">Add activity</button>
             </form>
 
         </div>

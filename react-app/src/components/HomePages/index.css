@@ -1,5 +1,76 @@
 .home_page__container{
     display:flex;
+    width: 95%;
     flex-direction: column;
     margin-left: 100px;
+}
+.dogs__container{
+    padding-top: 25px;
+    display: flex;
+    justify-content: space-around;
+    background-color: #247ba0;
+    padding-bottom: 80px;
+}
+.dog__thumbnail img{
+    max-width: 300px;
+    min-width: 300px;
+}
+.dog__thumbnail{
+    display: flex;
+    flex-direction: column;
+}
+.dog__thumbnail div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.dog_Name{
+    font-size: 25px;
+    font-weight: bold;
+}
+.dog_page{
+    flex-direction: row;
+}
+.dog_activities__container{
+    display: flex;
+    
+}
+.Activities{
+    width: 100%;
+}
+.activity_thumbnail{
+    display: flex;
+    flex-direction: column;
+}
+table {
+    border-collapse: collapse;
+  }
+table td{
+    width: 10%;
+}
+.activity-table {
+    
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.activity-table td, .activity-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.activity-table tr:nth-child(even){background-color: #f2f2f2;}
+
+.activity-table tr:hover {background-color: #ddd;}
+
+.activity-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #70c1b3;
+    color: white;
+}
+.activity-table td:first-child{
+    width: -25px;
 }
