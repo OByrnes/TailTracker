@@ -1,6 +1,7 @@
 import React from "react"
 import { NavLink } from 'react-router-dom';
 import {useSelector, useDispatch} from "react-redux"
+import SimpleMap from "../MapComponent/MapComponent"
 import "./index.css"
 
 
@@ -21,7 +22,7 @@ const HomePage = () => {
                 ))}
 
             </div>
-
+                    <SimpleMap />
         </div>
     )
 
