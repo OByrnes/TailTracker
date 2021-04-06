@@ -19,6 +19,6 @@ def seed():
 @seed_commands.command('undo')
 def undo():
     # 
-    # undo_users()
+    undo_users()
     undo_activity_types()
     # Add other undo functions here

@@ -14,7 +14,12 @@ import HomePage from "./components/HomePages/home";
 import DogPage from "./components/HomePages/DogPage";
 import { getAllBreeds } from "./store/breeds";
 import AddaDog from "./components/FormComponents/AddDogForm";
+import RemoveDogComponent from "./components/FormComponents/RemoveDog"
 import AddanActivity from "./components/FormComponents/AddActivityForm";
+import BreedsPage from "./components/breeds/BreedsPage";
+import BreedPage from "./components/breeds/BreedPage";
+import ActivityPage from "./components/ActivityPage/Activity";
+import Resource from "./components/ResourcesPage/Resource";
 
 function App() {
   const dispatch = useDispatch()
@@ -50,6 +55,9 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
         </Route>
+        <Route path="/resources">
+          <Resource />
+        </Route>
         <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
           <UsersList/>
         </ProtectedRoute>
@@ -67,6 +75,18 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/addActivity" exact={true} authenticated={authenticated}>
          <AddanActivity />
+        </ProtectedRoute>
+        <ProtectedRoute path="/breeds" exact={true}>
+          <BreedsPage />
+        </ProtectedRoute>
+        <ProtectedRoute path="/breeds/:breedid" exact={true}>
+          <BreedPage />
+        </ProtectedRoute>
+        <ProtectedRoute path="/activities/:activityid" exact={true}>
+          <ActivityPage />
+        </ProtectedRoute>
+        <ProtectedRoute path="/remove-dog" exact={true}>
+          <RemoveDogComponent />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

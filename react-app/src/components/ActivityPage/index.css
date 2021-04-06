@@ -1,0 +1,15 @@
+.activity_page__container{
+    margin-left: 100px;
+    width: 100%;
+    display: flex;
+}
+.activities__list{
+    width: 25%;
+}
+.activities__list h4{
+    text-decoration: underline;
+}
+.activity_list__item{
+    display: flex;
+    flex-direction: column;
+}

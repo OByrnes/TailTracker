@@ -10,6 +10,7 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.breeds_routes import breeds_routes
 from .api.dogs_routes import dogs_routes
+from .api.activity_routes import activity_routes
 
 from .seeds import seed_commands
 
@@ -35,8 +36,9 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(breeds_routes, url_prefix="/api/breeds")
 app.register_blueprint(dogs_routes, url_prefix="/api/dogs")
+app.register_blueprint(activity_routes, url_prefix="/api/activities")
 db.init_app(app)
-Migrate(app, db)
+Migrate(app, db, compare_type=True)
 
 # Application Security
 CORS(app)

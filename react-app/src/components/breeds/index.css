@@ -1,0 +1,60 @@
+.Breeds-Page__container{
+    margin-left: 100px;
+    display: flex;
+    flex-direction: column;
+    
+}
+.breed-List__container img{
+    max-width: 290px;
+    max-height: 300px;
+}
+.breed-List__container{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 450px;
+    padding-bottom: 35px;
+    padding-top: 5px;
+    align-items: center;
+    border-right: solid #50514f5d 6px;
+    
+}
+.breed_name__container{
+    height: 55px;
+}
+.breed_info{
+    width: 65%;
+}
+
+.breeds_list_outer__container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.breed-Page__container{
+    display:flex;
+    margin-left: 80px;
+}
+.breed-Page__container div{
+    display:flex;
+    flex-direction: column;
+    font-size: 20px;
+    margin-left: 20px;
+}
+.breed-Page__container div:first-child{
+    margin-top: 25px;
+    border-right: solid #50514f5d 6px;
+    padding-bottom: 30px;
+    align-items: center;
+}
+.breed_name{
+    margin-bottom: 5px;
+    font-size: 35px;
+    font-weight: bold;
+    color: #247ba0;
+}
+.breed_info{
+    align-content: center;
+    justify-content: center;
+}
