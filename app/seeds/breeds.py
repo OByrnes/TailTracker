@@ -3985,7 +3985,7 @@ def _avgExercise(breed):
         return exceptions[breed['name']]
     else:
         return breedgroup[breed['breed_group']]
-        
+mixedBreeds = [{"avg_activity_level":(120//6), "name":"Mixed Breed (Very Active)"},{"avg_activity_level":(60//6), "name":"Mixed Breed (Moderately Active)"},{"avg_activity_level":(30//6), "name":"Mixed Breed (Not Very Active)"}]
 def seed_breeds():
     for breed in breedList:
         if "bred_for" in breed:
@@ -3994,6 +3994,11 @@ def seed_breeds():
             newBreed = Breed(name=breed['name'], avg_activity_level=_avgExercise(breed), breed_img_url=breed['image']['url'], temperament=breed['temperament'], life_span=breed['life_span'], breed_group=breed['breed_group'], weight=breed['weight']['imperial'], height=breed['height']['imperial'])
         db.session.add(newBreed)
         db.session.commit()
+    for breed in mixedBreeds:
+        newBreed = Breed(name=breed["name"], avg_activity_level=breed["avg_activity_level"])
+        db.session.add(newBreed)
+        db.session.commit()
+
 
 def undo_breeds():
     db.session.execute('TRUNCATE users;')

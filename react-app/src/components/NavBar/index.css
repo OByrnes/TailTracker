@@ -22,3 +22,18 @@ background-color: #50514f;
 .navIcon__holder span{
   color:#247ba0;
 }
+.last{
+  margin-bottom: 30px;
+}
+
+.DropDown__container{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  background-color: white;
+  width: 200px;
+  top: 200px;
+  left:100px;
+}
