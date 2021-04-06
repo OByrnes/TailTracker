@@ -33,6 +33,7 @@ const HomePage = () => {
                 ))}
 
             </div>
+
             <div className="Activities">
             <table className="activity-table">
                    <thead>
@@ -57,6 +58,7 @@ const HomePage = () => {
                     </table>
 
             </div>
+
 
         </div>
     )
