@@ -16,7 +16,7 @@ const SimpleMap= () => {
 
     
  
-Geocode.setApiKey("AIzaSyAQmpgQmAYgF5E7rCJ8psBeMvagml03iZk");
+Geocode.setApiKey("");
 
 // set response language. Defaults to english.
 Geocode.setLanguage("en");
@@ -71,7 +71,7 @@ const addNewMarker = (e) =>{
 }
 const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: "AIzaSyAQmpgQmAYgF5E7rCJ8psBeMvagml03iZk"
+    googleMapsApiKey: ""
   })
   const containerStyle = {
     width: '400px',
