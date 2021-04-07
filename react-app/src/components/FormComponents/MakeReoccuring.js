@@ -75,6 +75,7 @@ const MakeReoccuring = (showReoccuring, setShowReoccuring ) => {
                     let newActivity = new FormData()
                     newActivity.append('name', activity.name)
                      newActivity.append("dog_id",dog_id)
+                     newActivity.append("routeId", activity.route_id)
                      newActivity.append("activityType_id",activity.activityType.id)
                      newActivity.append("minutes",activity.minutes)
                      newActivity.append("date", dateString)

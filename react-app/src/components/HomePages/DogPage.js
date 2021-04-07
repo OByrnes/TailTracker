@@ -5,6 +5,8 @@ import {useSelector, useDispatch} from "react-redux"
 import {NavLink, useParams} from "react-router-dom"
 import { getAllBreeds } from "../../store/breeds"
 import { getAllActivityTypes } from "../../store/activityTypes"
+// import AddDogM from "./AddDogM"
+// import AddActivityM from "./AddActivityM"
 import EditDog from "../FormComponents/EditDog"
 import DogTableRow from "./DogTableRow"
 import SetGoal from "../FormComponents/SetGoal";
@@ -48,7 +50,7 @@ const DogPage = () => {
     let activitiesthreedaysago = activities.filter( activity => activity.date.toLocaleDateString() == date.subtractDays(3).toLocaleDateString())
     let activitiestwodaysago = activities.filter( activity => activity.date.toLocaleDateString() == date.subtractDays(2).toLocaleDateString())
     let activitiesyesterday = activities.filter( activity => activity.date.toLocaleDateString() == date.subtractDays(1).toLocaleDateString())
-    console.log(activitiestwodaysago)
+    
     
     const [newDailyGoal, setNewDailyGoal] = useState(10)
     const [updatingGoal, setUpdatingGoal] = useState(false)
@@ -88,7 +90,7 @@ const DogPage = () => {
         let dogBirthMonth = new Date(dog.birthday).getMonth()
         let ageinYears = currentDateYear-dogBirthyear
         let ageinMonths = currentDateMonth-dogBirthMonth
-        console.log(ageinMonths)
+        
         if (ageinYears <= 1){
             if (ageinMonths<0){
                 dog.age=(`${12+ageinMonths} months`)
@@ -133,6 +135,8 @@ const DogPage = () => {
 
     return (
         <div className="home_page__container">
+            {/* <AddActivityM />
+            <AddDogM /> */}
             <Modal
         isOpen={editDog}
         contentLabel="EditDog"

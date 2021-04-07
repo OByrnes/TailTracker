@@ -6,13 +6,15 @@ import addActivityIcon from "../../images/addActivityTT.png"
 import addDogIcon from "../../images/adddogTT.png"
 import homeIcon from "../../images/homeTT.png"
 import breedsIcon from "../../images/breedTT.png"
-import { useModal } from '../../context/modelContext';
+import { useModal } from '../../context/modalContext'
 import "./index.css"
 import UserinfoDD from './UserinfoDD';
 
 const NavBar = ({ setAuthenticated }) => {
-  const [DDOpen, setDDOpen] = useState(false)
   
+  const [DDOpen, setDDOpen] = useState(false)
+  const {openActivityModal, setOpenActivityModal, openAddDogModal, setOpenAddDogModal} = useModal()
+  console.log(openAddDogModal)
   return (
     <nav>
       {DDOpen?<UserinfoDD setDDOpen={setDDOpen} />:null}
@@ -26,7 +28,7 @@ const NavBar = ({ setAuthenticated }) => {
         <span>User Info</span>
       </div>
       <NavLink to="/adddog">
-      <div className="navIcon__holder">
+      <div className="navIcon__holder" >
         <img src={addDogIcon} alt="add-Dog"/>
         <span>Add a dog</span>
       </div>
@@ -41,6 +43,11 @@ const NavBar = ({ setAuthenticated }) => {
         <div className="navIcon__holder last">
           <img src={breedsIcon} alt="breedIcon"/>
           <span>Breeds</span>
+        </div>
+      </NavLink>
+      <NavLink to="/routes">
+        <div className="navIcon__holder">
+          <span>Add Route</span>
         </div>
       </NavLink>
     

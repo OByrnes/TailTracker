@@ -1,6 +1,6 @@
 import * as deepcopy from "deepcopy"
 
-const GET_ACTIVITYTYPES = "breeds/GETACTIVITYTYPES";
+const GET_ACTIVITYTYPES = "activities/GETACTIVITYTYPES";
 
 const getActivityTypes = (activityTypes) => {
     return {

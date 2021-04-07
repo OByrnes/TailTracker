@@ -1,6 +1,8 @@
 import React from "react"
 import { NavLink } from 'react-router-dom';
 import {useSelector, useDispatch} from "react-redux"
+// import AddDogM from "./AddDogM"
+// import AddActivityM from "./AddActivityM"
 import DogTableRow from "./DogTableRow"
 import "./index.css"
 
@@ -16,6 +18,9 @@ const HomePage = () => {
     }
     return (
         <div className="home_page__container">
+            {/* <AddActivityM />
+            <AddDogM /> */}
+           
             <div className="dogs__container">
                 {user.dogs.map(dog => (
                     <NavLink to={`/dogs/${dog.id}`}>

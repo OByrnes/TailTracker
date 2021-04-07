@@ -154,3 +154,7 @@
     color: red;
     font-size: 13px;
   }
+  .add_dog_route_modal__inner{
+    width: 500px;
+    background-color: white;
+  }

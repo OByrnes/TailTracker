@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux"
 import "./index.css"
 import logo from "../../images/TTLogo1png.png";
 import { getAllActivityTypes } from "../../store/activityTypes";
+import { getAllRoutes } from "../../store/routes";
 
 
 const AddanActivity = () => {
@@ -13,6 +14,7 @@ const AddanActivity = () => {
     const dispatch = useDispatch()
     useEffect(()=>{
         dispatch(getAllActivityTypes())
+        dispatch(getAllRoutes())
     },[])
 
     let activityTypes = useSelector(state => state.activityTypes?.activityTypes?.activityTypes)
@@ -39,7 +41,9 @@ const AddanActivity = () => {
     const [dogsIds, setDogsIds] = useState([])
     const [image, setImage] = useState(null);
     const [imageLoading, setImageLoading] = useState(false);
+    const [routeId, setRouteId] = useState(0)
     const history = useHistory()
+    let routeList;
     
     const submitYourActivity = (e) => {
         e.preventDefault()
@@ -86,6 +90,7 @@ const AddanActivity = () => {
     }
     return (
         <div className="form_page_container">
+            
             <div className="login-page_header__container">
                 <img alt="logo" src={logo} />
                 <span className="form_TailTracker">Add an activity</span>
@@ -107,6 +112,13 @@ const AddanActivity = () => {
                 <div>
                 <input type="file" name="activityImg" accept="image/*" onChange={updateImage}/>
                 </div>
+                <div>
+                    <select value={routeId} onChange={(e)=>setRouteId(e.target.value)}>
+                        {routeList? routeList.map(existingroute => (
+                            <option key={routeId} value={existingroute.id}>{existingroute.name}</option>
+                        )):null }
+                    </select>
+                    </div>
                 <div>
                     <label>How long was the activity?</label>
                     <input type="number" name="minutes" value={minutes} onChange={(e)=>setMinutes(e.target.value)}/>
