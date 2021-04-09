@@ -6,6 +6,7 @@ import addActivityIcon from "../../images/addActivityTT.png"
 import addDogIcon from "../../images/adddogTT.png"
 import homeIcon from "../../images/homeTT.png"
 import breedsIcon from "../../images/breedTT.png"
+import dogRoute from "../../images/dogroute.png"
 import { useModal } from '../../context/modalContext'
 import "./index.css"
 import UserinfoDD from './UserinfoDD';
@@ -20,7 +21,10 @@ const NavBar = ({ setAuthenticated }) => {
       {DDOpen?<UserinfoDD setDDOpen={setDDOpen} />:null}
       <div className="nav-logo__container top-home">
       <NavLink to="/home" exact={true} activeClassName="active">
-            <img src={Logo} alt="logo"/>
+      <div className="navIcon__holder" >
+        <img src={Logo} alt="logo"/>
+        <span>Home</span>
+      </div>
       </NavLink>
       </div>
       <div className="navIcon__holder clickable" onClick={()=>setDDOpen(true)}>
@@ -40,13 +44,14 @@ const NavBar = ({ setAuthenticated }) => {
         </div>
       </NavLink>
       <NavLink to="/breeds">
-        <div className="navIcon__holder last">
+        <div className="navIcon__holder">
           <img src={breedsIcon} alt="breedIcon"/>
           <span>Breeds</span>
         </div>
       </NavLink>
       <NavLink to="/routes">
-        <div className="navIcon__holder">
+        <div className="navIcon__holder  last">
+          <img src={dogRoute} alt="routeIcon"/>
           <span>Add Route</span>
         </div>
       </NavLink>

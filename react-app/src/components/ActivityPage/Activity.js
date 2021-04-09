@@ -125,36 +125,48 @@ const ActivityPage = () => {
     return (
         <div className="activity_page__container">
             <div className="activities__list">
-                <div>
+                <div className="heading__container">
                     <h4>All Activities</h4>
                 </div>
                 {allActivities.map(act => (
                     <NavLink key={act.id} to={`/activities/${act.id}`}>
                     <div className="activity_list__item" >
-                        <span>{act.date.toLocaleString()}</span>
-                        <span>{act.activityType.type}</span>
+                        <span className="activity-name">{act.name}</span>
+                        <span>{new Date(act.date).toLocaleString()}</span>
                     </div>
                     </NavLink>
                 ))}
             </div>
             <div className="activity-main-content__container">
-            <div className="activity_thumbnail">
-                        {activity.name? <span>{activity.name}</span>:null}
-                        {activity.activity_img? <img src={activity.activity_img} alt="activity"/>:(<form onSubmit={addActivityPicture}><div>
+                <div className="header__container">
+                    {activity.name? <span>{activity.name}</span>:null}
+                </div >
+                <div className="top-content">
+                <div className="activity-info">
+                        {activity.activity_img? <div className="img_container"><img src={activity.activity_img} alt="activity"/></div>:(<div className="img_container form__container"><form onSubmit={addActivityPicture}><div>
                 <input type="file" name="dogImg" accept="image/*" onChange={updateImage}/>
-                </div><button disabled={!image} type='submit'>Add Picture</button></form>)}
-                        <span>{activity.date.toLocaleString()}</span>
+                </div><button disabled={!image} type='submit'>Add Picture</button></form></div>)}
+                </div>
+                    <div className="activity-info__container">
+
+                        <span>{new Date(activity.date).toLocaleString()}</span>
                         <span>{activity.minutes} Minutes</span>
                         <span>{activity.activityType.type}</span>
                         <span>Points {Math.floor(activity.minutes*activity.activityType.exertion/6)}</span>
+                        {activity.comment?<span>{activity.comment}</span>:<div className="form__container">
                         <form onSubmit={addComment}>
                             <textarea placeholder='add a comment..' value={comment} onChange={(e)=>setComment(e.target.value)} />
                             <button>Add Comment</button>
-                        </form>
-                        <button onClick={deleteActivity}>Delete Activity</button>
-                        <div><span>Is this a reoccurring activity? Add it according to your schedule</span></div>
-                        <button onClick={()=>setShowReoccuring(true)}>Make this Activity Reoccuring</button>
+                        </form></div>}
                     </div>
+
+                </div>
+                <div className="button-container">
+                    <button id="delete-btn" onClick={deleteActivity}>Delete Activity</button>
+                    <button className="clickable reocuring" onClick={()=>setShowReoccuring(true)}>Make this Activity Reoccuring</button>
+
+                </div>
+                    
             <div>
             <Modal
         isOpen={showReoccuring}
@@ -164,7 +176,7 @@ const ActivityPage = () => {
         onRequestClose={closeRecurring}
       >
         <div className="closeIcoOuterShell">
-          <button className="closeIcoShell" className="clickable" onClick={(e) => setShowReoccuring(false)}>
+          <button className="closeIco clickable"  onClick={(e) => setShowReoccuring(false)}>
             X
           </button>
         </div>

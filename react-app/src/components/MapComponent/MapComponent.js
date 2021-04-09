@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow, useJsApiLoader, DistanceMatrixService, Polyline, PolylineProps, DrawingManager } from '@react-google-maps/api';
 import { useHistory } from "react-router-dom";
 import Geocode from 'react-geocode'
+import "./index.css"
 import deepcopy from 'deepcopy';
 import uuid from 'react-uuid'
 
@@ -178,13 +179,12 @@ const onLoadPolyline = e => {
   }, [])
  
  const options = {
-  strokeColor: '#FF0000',
+  strokeColor: '#247BA0',
   strokeOpacity: 0.8,
   strokeWeight: 2,
-  fillColor: '#FF0000',
+  fillColor: '#247BA0',
   fillOpacity: 0.35,
   clickable: false,
-  draggable: true,
   editable: true,
   visible: true,
   radius: 30000,
@@ -196,21 +196,36 @@ const onLoadPolyline = e => {
 
     return (
       // Important! Always set the container height explicitly
-      <div>
+      <div className="map_page__container">
+        <div>
+          <h2>Add A Route</h2>
+        </div>
           <div>
+            <div>
               <input type="text" value={routeName} placeholder="Name Your route" onChange={(e)=>setRouteName(e.target.value)}/>
+              </div>
+              <div>
               <input type="text" placeholder="address of the starting position" value={startingPosition} onChange={(e)=>setStartingPosition(e.target.value)}/>
-              <button onClick={MakeMap}>Mark Starting Position</button>
-              <button onClick={deleteLastPoint}>Delete the last Marker</button>
-              <label>
+              </div>
+              <div id="button-holder">
+              <button className="form__button map-button" id="starting-btn" disabled={!startingPosition} onClick={MakeMap}>Mark Starting Position</button>
+              <button className="form__button map-button" id="delete-btn" disabled={!startingPosition} onClick={deleteLastPoint}>Delete the last Marker</button>
+              </div>
+              <div>
+              <fieldset>
+              <label className="container">
                 Round Trip
                 <input type="checkbox" value={true} onChange={(e)=>setRoundTrip(e.target.checked)}/>
+                <span class="checkmark"></span>
               </label>
+              </fieldset>
+              </div>
           </div>
         
         <div style={{ height: '500px', width: '300px' }}>
         {lat > 0 && currentPosition ?<GoogleMap
           mapContainerStyle={containerStyle}
+          clickableIcons={false}
           zoom={18}
           center={currentPosition}
           
@@ -228,6 +243,7 @@ const onLoadPolyline = e => {
                </>
             ))}
             <Polyline
+            options={options}
             onDblClick={(e)=>onLoadPolyline(e)}
       path={activityRoute}
     />

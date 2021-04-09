@@ -124,25 +124,25 @@ const DogTableRow = ({dog}) => {
                        <tr>
                            <td></td>
                            <td>
-                               {activitiessixdaysago.reduce((a,b) => a+ (b.minutes*b.activityType.exertion/6 || 0), 0)} Points
+                               {activitiessixdaysago.reduce((a,b) => a+ (b.minutes*b.activityType.exertion/6 || 0), 0).toFixed(1)} Points
                            </td>
                            <td>
-                               {activitiesfivedaysago.reduce((a,b) => a+ (b.minutes*b.activityType.exertion/6 || 0), 0)} Points
+                               {activitiesfivedaysago.reduce((a,b) => a+ (b.minutes*b.activityType.exertion/6 || 0), 0).toFixed(1)} Points
                            </td>
                            <td>
-                               {activitiesfourdaysago.reduce((a,b) => a+ (b.minutes*b.activityType.exertion/6 || 0), 0)} Points
+                               {activitiesfourdaysago.reduce((a,b) => a+ (b.minutes*b.activityType.exertion/6 || 0), 0).toFixed(1)} Points
                            </td>
                            <td>
-                               {activitiesthreedaysago.reduce((a,b) => a+ (b.minutes*b.activityType.exertion/6 || 0), 0)} Points
+                               {activitiesthreedaysago.reduce((a,b) => a+ (b.minutes*b.activityType.exertion/6 || 0), 0).toFixed(1)} Points
                            </td>
                            <td>
-                               {activitiestwodaysago.reduce((a,b) => a+ (b.minutes*b.activityType.exertion/6 || 0), 0)} Points
+                               {activitiestwodaysago.reduce((a,b) => a+ (b.minutes*b.activityType.exertion/6 || 0), 0).toFixed(1)} Points
                            </td>
                            <td>
-                               {activitiesyesterday.reduce((a,b) => a+ (b.minutes*b.activityType.exertion/6 || 0), 0)} Points
+                               {activitiesyesterday.reduce((a,b) => a+ (b.minutes*b.activityType.exertion/6 || 0), 0).toFixed(1)} Points
                            </td>
                            <td>
-                               {activitiestoday.reduce((a,b) => a+ (b.minutes*b.activityType.exertion/6 || 0), 0)} Points
+                               {activitiestoday.reduce((a,b) => a+ (b.minutes*b.activityType.exertion/6 || 0), 0).toFixed(1)} Points
                            </td>
                        </tr>
         </>

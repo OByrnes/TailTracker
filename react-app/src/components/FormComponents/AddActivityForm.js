@@ -18,6 +18,8 @@ const AddanActivity = () => {
     },[])
 
     let activityTypes = useSelector(state => state.activityTypes?.activityTypes?.activityTypes)
+    let routes = useSelector(state => state.routes.Routes?.routes)
+    console.log(routes)
     let currentDate = new Date();
     let month;
     let dayDate;
@@ -44,6 +46,9 @@ const AddanActivity = () => {
     const [routeId, setRouteId] = useState(0)
     const history = useHistory()
     let routeList;
+    if (routes){
+        routeList= routes
+    }
     
     const submitYourActivity = (e) => {
         e.preventDefault()
@@ -58,7 +63,7 @@ const AddanActivity = () => {
              newActivity.append("activityType_id",activityType)
              newActivity.append("minutes",minutes)
              newActivity.append("date", dateString)
-             
+             setImageLoading(true)
             let res = await fetch("/api/activities", {
                 method: "POST",
                 body: newActivity
@@ -66,6 +71,7 @@ const AddanActivity = () => {
             if (res.ok) {
                 await res.json()
                 history.push("/home")
+                setImageLoading(false)
             }
             else{
                 console.log("error")
@@ -89,6 +95,7 @@ const AddanActivity = () => {
 
     }
     return (
+        <div className="outerPage__container">
         <div className="form_page_container">
             
             <div className="login-page_header__container">
@@ -97,27 +104,36 @@ const AddanActivity = () => {
             </div>
 
             <form onSubmit={submitYourActivity}>
-                <div>
+                
                     <div>
+                        <label>Who went on the Activity?</label>
                     <fieldset onChange={addAnotherDog}>
-            {dogs.map((dog) => (<label key={dog.id}>{dog.name}<input className="dogCheck" type="checkbox" name="dogCheckbox" value={dog.id} key={dog.id}/> </label>))}
+            {dogs.map((dog) => (<label className="container" key={dog.id}>{dog.name}<input className="dogCheck" type="checkbox" name="dogCheckbox" value={dog.id} key={dog.id}/><span class="checkmark"></span> </label>))}
           </fieldset>
                     </div>
+                    <div>
+                    <label>What kind of exercise was it?</label>
+                    <div className="custom-select">
                     <select value={activityType} onChange={(e)=>setActivityType(e.target.value)}>
                         {activityTypes? activityTypes.map(activity_type => (
                             <option value={activity_type.id} key={activity_type.id}>{activity_type.type}</option>
                         )):null}
-                    </select>
-                </div>
+                    </select></div>
+                    </div>
+                
                 <div>
+                    <label>Add a Picture from your Activity!</label>
                 <input type="file" name="activityImg" accept="image/*" onChange={updateImage}/>
                 </div>
                 <div>
+                    <label>Route you took?</label>
+                    <div className="custom-select">
                     <select value={routeId} onChange={(e)=>setRouteId(e.target.value)}>
                         {routeList? routeList.map(existingroute => (
                             <option key={routeId} value={existingroute.id}>{existingroute.name}</option>
                         )):null }
                     </select>
+                    </div>
                     </div>
                 <div>
                     <label>How long was the activity?</label>
@@ -128,12 +144,13 @@ const AddanActivity = () => {
                     <input type="text" name='name' value={name} onChange={(e)=>setName(e.target.value)}/>
                 </div>
                 <div>
+                    <label>Date of the Activity</label>
                     <input type="datetime-local" value={date} onChange={(e)=>setDate(e.target.value)} />
                 </div>
                 <button className="form__button" type="submit">Add activity</button>
             </form>
 
-        </div>
+        </div></div>
     )
 
 }

@@ -26,7 +26,6 @@ const RoutePage = () => {
     }
     useEffect(()=>{
         if(selectedRoute){
-            console.log(selectedRoute)
             let routeMarkerList = JSON.parse(selectedRoute.markerList)
             console.log(routeMarkerList)
             setLat(routeMarkerList.startingPoint.lat)
@@ -57,14 +56,6 @@ const RoutePage = () => {
           };
       }
       
-     
-    //   const onLoad = React.useCallback(function callback(map) {
-    //     const bounds = new window.google.maps.LatLngBounds();
-        
-    //     map.fitBounds(bounds);
-    //     setMap(map)
-    //   }, [])
-    
     const onLoadPolyline = e => {
       console.log('polyline: ', e)
     };
@@ -73,19 +64,18 @@ const RoutePage = () => {
         setMap(null)
       }, [])
      
-     const options = {
-      strokeColor: '#FF0000',
-      strokeOpacity: 0.8,
-      strokeWeight: 2,
-      fillColor: '#FF0000',
-      fillOpacity: 0.35,
-      clickable: false,
-      draggable: true,
-      editable: true,
-      visible: true,
-      radius: 30000,
-      zIndex: 3
-    };
+      const options = {
+        strokeColor: '#247BA0',
+        strokeOpacity: 0.8,
+        strokeWeight: 2,
+        fillColor: '#247BA0',
+        fillOpacity: 0.35,
+        clickable: false,
+        editable: true,
+        visible: true,
+        radius: 30000,
+        zIndex: 3
+      };
     
     return (
         <div className="home_page__container">
@@ -102,6 +92,7 @@ const RoutePage = () => {
           onUnmount={onUnmount}
           >
             <Polyline
+            options={options}
             onDblClick={(e)=>onLoadPolyline(e)}
       path={activityRoute}
     />

@@ -83,6 +83,7 @@ const AddaDog = () => {
         setBirthday(e)
     }
     return (
+        <div className="outerPage__container">
         <div className="form_page_container">
             <div className="login-page_header__container">
                 <img alt="logo" src={logo} />
@@ -91,18 +92,26 @@ const AddaDog = () => {
 
             <form onSubmit={handleSubmit}>
                 <div>
-                    <input type="text" name="name" required={true} value={name} onChange={(e)=>setName(e.target.value)} placeholder="Dog's Name"/>
+                    <label>Dog's Name</label>
+                    <input type="text" name="name" required={true} value={name} onChange={(e)=>setName(e.target.value)}/>
                 </div>
-                <BreedSuggester setbreedId={setbreedId}/>
-                
                 <div>
+                <label>Breed</label>
+                <BreedSuggester setbreedId={setbreedId}/>
+                </div>
+                <div>
+                    <label>Birthday</label>
                     <input type="date" name="birthday" value={birthday} onChange={(e)=>handleBirthday(e.target.value)} placeholder="Dog's Birthday"/>
                 </div>
-                <span>{age}</span>
                 <div>
+                <span>{age}</span>
+                </div>
+                <div>
+                    <label>Weight in Pounds</label>
                     <input type="number" name="weight" value={weight} onChange={(e)=>setWeight(e.target.value)} placeholder="Weight"/>
                 </div>
                 <div>
+                    <label>Description</label>
                     <textarea value={description} name="description" onChange={(e)=>setDescription(e.target.value)} placeholder="A little bit about your puppers..." />
                 </div>
                 <div>
@@ -112,7 +121,7 @@ const AddaDog = () => {
                 {(imageLoading)&& <p>Loading...</p>}
             </form>
 
-        </div>
+        </div></div>
     )
 
 }

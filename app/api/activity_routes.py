@@ -21,7 +21,7 @@ def validation_errors_to_error_messages(validation_errors):
 
 
 @activity_routes.route('/activitytypes')
-def get_all_breeds():
+def get_all_activityTypes():
     activityTypesList = ActivityType.query.all()
     return jsonify({"activityTypes": [actType.to_dict()
                                       for actType in activityTypesList]})

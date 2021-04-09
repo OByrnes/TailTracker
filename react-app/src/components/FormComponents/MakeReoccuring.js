@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {useSelector, useDispatch} from "react-redux"
 import {useParams } from "react-router";
 
-const MakeReoccuring = (showReoccuring, setShowReoccuring ) => {
+const MakeReoccuring = ({showReoccuring, setShowReoccuring} ) => {
     const [days, setDays] = useState([])
     const [dogsIds, setDogsIds] = useState([])
     const user = useSelector(state => state.session.user);
