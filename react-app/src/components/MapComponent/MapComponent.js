@@ -42,8 +42,9 @@ const SimpleMap= () => {
         console.log("error")
       }
     }
- 
+
 Geocode.setApiKey(process.env.REACT_APP_MAPS_KEY);
+
 
 // set response language. Defaults to english.
 Geocode.setLanguage("en");
@@ -155,7 +156,9 @@ const addNewMarker = (e) =>{
 }
 const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
+
     googleMapsApiKey: process.env.REACT_APP_MAPS_KEY
+
   })
   const containerStyle = {
     width: '400px',
