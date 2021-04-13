@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import {useSelector, useDispatch} from "react-redux"
-import { getAllBreeds } from "../store/breeds"
+import React, { useState } from 'react';
 import Autosuggest from 'react-autosuggest';
 import "../components/FormComponents/index.css"
 
@@ -17,11 +15,8 @@ import "../components/FormComponents/index.css"
 // Use your imagination to render suggestions.
 
 
-const BreedSuggester = ({setbreedId}) => {
-  const dispatch = useDispatch()
-    useEffect(()=>{
-        dispatch(getAllBreeds())
-    },[])
+const BreedSuggester = ({setbreedId, breeds}) => {
+  
     const [value, setValue] = useState('')
     const [suggestions, setSuggestions] = useState([])
     
@@ -29,9 +24,9 @@ const BreedSuggester = ({setbreedId}) => {
       setValue(newValue)
       
   };
-  // breed.name.toLowerCase().slice(0, inputLength) === inputValue
+  
 
-  const breeds = useSelector(state => state?.breeds?.breeds?.breeds)
+  
   const getSuggestions = value => {
     const inputValue = value.trim().toLowerCase();
     const inputLength = inputValue.length;

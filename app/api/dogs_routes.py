@@ -8,7 +8,7 @@ from app.s3_helpers import (
 dogs_routes = Blueprint("dogs", __name__)
 
 
-@dogs_routes.route("", methods=["POST"])
+@dogs_routes.route("/", methods=["POST"])
 @login_required
 def upload_image():
     
@@ -43,7 +43,7 @@ def upload_image():
     return {"url": url}
 
 
-@dogs_routes.route("/<int:dog_id>", methods=["PATCH"])
+@dogs_routes.route("/<int:dog_id>/", methods=["PATCH"])
 @login_required
 def edit_dog(dog_id):
     dog = Dog.query.filter(Dog.id == dog_id).first()
@@ -72,7 +72,7 @@ def edit_dog(dog_id):
     db.session.commit()
     return {"dog":dog.to_dict()}
 
-@dogs_routes.route("/delete/<int:dog_id>", methods=["DELETE"])
+@dogs_routes.route("/delete/<int:dog_id>/", methods=["DELETE"])
 @login_required
 def delete_dog(dog_id):
     dog = Dog.query.filter(Dog.id == dog_id).first()

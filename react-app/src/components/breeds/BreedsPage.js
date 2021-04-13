@@ -13,7 +13,8 @@ const BreedsPage = () => {
         dispatch(getAllBreeds())
     },[])
     const user = useSelector(state => state.session.user);
-    let breeds = useSelector(state=> state.breeds?.breeds?.breeds)
+    let breeds;
+    let breedsList = useSelector(state=> state?.breeds?.breeds?.breeds)
     const [breedId, setBreedId] = useState(-2)
     useEffect(()=>{
         if (breedId>0){
@@ -21,9 +22,15 @@ const BreedsPage = () => {
         }
 
     },[breedId])
+    if(breedsList){
+        breeds=breedsList
+    }
     return (
         <div className="Breeds-Page__container">
-            <BreedSuggester setbreedId={setBreedId}/>
+            <div>
+            <h1>Breeds</h1>
+            <BreedSuggester setbreedId={setBreedId} breeds={breeds}/>
+            </div>
             <div className="breeds_list_outer__container">
             {breeds? breeds.map(breed => (
                 <NavLink to={`/breeds/${breed.id}`}>

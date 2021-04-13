@@ -4,7 +4,6 @@ import "./index.css"
 import {useSelector, useDispatch} from "react-redux"
 import {NavLink, useParams} from "react-router-dom"
 import { getAllBreeds } from "../../store/breeds"
-import { getAllActivityTypes } from "../../store/activityTypes"
 import EditDog from "../FormComponents/EditDog"
 import DogTableRow from "./DogTableRow"
 import SetGoal from "../FormComponents/SetGoal";
@@ -22,9 +21,7 @@ const DogPage = () => {
         activity.date = activityDate
         return activity
     })
-    let currentDay = new Date()
-    let sortedactivities = activities.sort((a,b)=> {
-        return b.date-a.date})
+    
     
     Date.prototype.subtractDays = function(days) {
         let date = new Date(this.valueOf());
@@ -33,23 +30,7 @@ const DogPage = () => {
     }
     
     let date = new Date();
-    let sixdaysago=date.subtractDays(6)
-    let fivedaysago = date.subtractDays(5)
-    let fourdaysago =date.subtractDays(4)
-    let threedaysago = date.subtractDays(3)
-    let twodaysago = date.subtractDays(2)
-    let yesterday = date.subtractDays(1)
 
-   
-    let activitiestoday= activities.filter( activity => activity.date.toLocaleDateString() == date.toLocaleDateString())
-    let activitiessixdaysago= activities.filter( activity => activity.date.toLocaleDateString() == date.subtractDays(6).toLocaleDateString())
-    let activitiesfivedaysago = activities.filter( activity => activity.date.toLocaleDateString() == date.subtractDays(5).toLocaleDateString())
-    let activitiesfourdaysago =activities.filter( activity => activity.date.toLocaleDateString() == date.subtractDays(4).toLocaleDateString())
-    let activitiesthreedaysago = activities.filter( activity => activity.date.toLocaleDateString() == date.subtractDays(3).toLocaleDateString())
-    let activitiestwodaysago = activities.filter( activity => activity.date.toLocaleDateString() == date.subtractDays(2).toLocaleDateString())
-    let activitiesyesterday = activities.filter( activity => activity.date.toLocaleDateString() == date.subtractDays(1).toLocaleDateString())
-    
-    
     const [newDailyGoal, setNewDailyGoal] = useState(10)
     const [updatingGoal, setUpdatingGoal] = useState(false)
     const [editDog, setEditDog] = useState(false)
@@ -116,7 +97,7 @@ const DogPage = () => {
         const formData = new FormData()
         formData.append("daily_goal", newDailyGoal)
         setUpdatingGoal(true)
-        const res = await fetch(`/api/dogs/${dog.id}`, {
+        const res = await fetch(`/api/dogs/${dog.id}/`, {
             method: "PATCH",
             body: formData
         

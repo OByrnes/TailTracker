@@ -10,7 +10,7 @@ const getRoutes = (routes) => {
 }
 
 export const getAllRoutes = () => async (dispatch) => {
-    const response = await fetch("/api/dogroutes/all")
+    const response = await fetch("/api/dogroutes/all/")
     const data = await response.json()
     if (response.ok){
         dispatch(getRoutes(data))

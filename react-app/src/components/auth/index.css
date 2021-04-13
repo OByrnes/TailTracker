@@ -107,7 +107,7 @@ body {
   optgroup,
   select,
   textarea {
-    color: inherit;
+    
     font: inherit;
     font-size: 100%;
     margin: 0;
@@ -149,6 +149,7 @@ body {
   }
   .donthaveaccount__holder a {
     color: #247BA0;
+    
     text-decoration: none;
     font-weight: bolder;
   }
@@ -251,4 +252,13 @@ body {
     cursor: pointer;
     color: #247BA0;
     outline: 0;
+  }
+  .form_container input{
+    color: #247BA0;
+  }
+  form span, form textarea{
+    color: #247BA0;
+  }
+  .form_container span{
+    color: #247BA0
   }

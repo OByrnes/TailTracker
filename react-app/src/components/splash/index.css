@@ -112,7 +112,8 @@
 .splashSidebar__container{
     position: absolute;
     right: 0px;
-    top: 95px;
+    z-index: 5;
+    top: 90px;
     width: 200px;
     background-color: white;
     list-style-type: none;

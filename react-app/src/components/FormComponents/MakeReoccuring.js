@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import {useSelector, useDispatch} from "react-redux"
+import React, { useState } from "react";
+import {useSelector} from "react-redux"
 import {useParams } from "react-router";
 
 const MakeReoccuring = ({showReoccuring, setShowReoccuring} ) => {
@@ -80,7 +80,7 @@ const MakeReoccuring = ({showReoccuring, setShowReoccuring} ) => {
                      newActivity.append("minutes",activity.minutes)
                      newActivity.append("date", dateString)
                      
-                    let res = await fetch("/api/activities", {
+                    let res = await fetch("/api/activities/", {
                         method: "POST",
                         body: newActivity
                     })

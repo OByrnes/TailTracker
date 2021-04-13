@@ -7,7 +7,7 @@ body{
 .splash-body__container{
     background-image:
     linear-gradient(to bottom,rgba(255, 224, 102,.52), rgba(242, 95, 92, 0.52), rgba(112, 193, 179, 0.83)),
-    url('./images/dogwalker2.jpg');
+    url('./images/dogwalker2.png');
     width: 100%;
     height: 100%;
     background-size: contain;
@@ -17,7 +17,9 @@ body{
 .clickable{
     cursor: pointer;
 }
+
 a{
+    color: #247ba0;
     text-decoration: none;
 }
 .outerPage__container{

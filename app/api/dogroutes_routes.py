@@ -25,7 +25,7 @@ def add_new_route():
     db.session.commit()
     return newRoute.to_dict()
 
-@dogroutes_routes.route("/all")
+@dogroutes_routes.route("/all/")
 def get_all_routes():
     routesList = DogRoute.query.filter(DogRoute.user_id == current_user.id).all()
     return jsonify({'routes': [route.to_dict() for route in routesList]})

@@ -28,7 +28,7 @@ const EditDog = ({dog}) => {
         // aws uploads can be a bit slow—displaying
         // some sort of loading message is a good idea
         setImageLoading(true);
-        const res = await fetch(`/api/dogs/${dog.id}`, {
+        const res = await fetch(`/api/dogs/${dog.id}/`, {
             method: "PATCH",
             body: formData,
         });

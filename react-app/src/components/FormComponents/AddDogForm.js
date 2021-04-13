@@ -20,7 +20,10 @@ const AddaDog = () => {
     const history = useHistory(); // so that we can redirect after the image upload is successful
     const user = useSelector(state => state.session.user);
     const dispatch = useDispatch()
-    console.log(puppy)
+    useEffect(()=>{
+        dispatch(getAllBreeds())
+    },[])
+    const breeds = useSelector(state => state.breeds?.breeds?.breeds)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -38,7 +41,7 @@ const AddaDog = () => {
         // aws uploads can be a bit slow—displaying
         // some sort of loading message is a good idea
         setImageLoading(true);
-        const res = await fetch('/api/dogs', {
+        const res = await fetch('/api/dogs/', {
             method: "POST",
             body: formData,
         });
@@ -79,7 +82,7 @@ const AddaDog = () => {
             setAge(`${ageinYears} years`)
             
         }
-        // setAge(newAge)
+        
         setBirthday(e)
     }
     return (
@@ -97,7 +100,7 @@ const AddaDog = () => {
                 </div>
                 <div>
                 <label>Breed</label>
-                <BreedSuggester setbreedId={setbreedId}/>
+                <BreedSuggester setbreedId={setbreedId} breeds={breeds}/>
                 </div>
                 <div>
                     <label>Birthday</label>

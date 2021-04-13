@@ -10,7 +10,7 @@ const addDog = (dog) => {
 }
 
 export const getAllBreeds = () => async (dispatch) => {
-    const response = await fetch("/api/breeds")
+    const response = await fetch("/api/breeds/")
     const data = await response.json()
     if (response.ok){
         dispatch(getBreeds(data))

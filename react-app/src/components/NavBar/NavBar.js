@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import LogoutButton from '../auth/LogoutButton';
 import Logo from "../../images/TTLogo1png.png"
 import addActivityIcon from "../../images/addActivityTT.png"
 import addDogIcon from "../../images/adddogTT.png"
@@ -14,8 +13,7 @@ import UserinfoDD from './UserinfoDD';
 const NavBar = ({ setAuthenticated }) => {
   
   const [DDOpen, setDDOpen] = useState(false)
-  const {openActivityModal, setOpenActivityModal, openAddDogModal, setOpenAddDogModal} = useModal()
-  console.log(openAddDogModal)
+  
   return (
     <nav>
       {DDOpen?<UserinfoDD setDDOpen={setDDOpen} />:null}

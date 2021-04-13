@@ -20,7 +20,7 @@ def activityExists(form, field):
 class NewActivityForm(FlaskForm):
     dog_id = IntegerField('dog_id', validators=[DataRequired(), dog_exists])
     name = StringField("name")
+    route_id = IntegerField("routeId")
     activityType_id = IntegerField('activityType_id', validators=[
                            DataRequired(), activityExists])
     minutes = IntegerField("minutes", validators=[DataRequired()])
-    # date = DateTimeField("date")

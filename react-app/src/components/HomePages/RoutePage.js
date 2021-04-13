@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react"
 import {useParams } from "react-router-dom"
 import {useSelector, useDispatch} from "react-redux"
-import { GoogleMap, LoadScript, Marker, InfoWindow, useJsApiLoader, DistanceMatrixService, Polyline, PolylineProps, DrawingManager } from '@react-google-maps/api';
+import { GoogleMap, useJsApiLoader, Polyline } from '@react-google-maps/api';
 import { getAllRoutes } from "../../store/routes";
 import "./index.css"
 
@@ -11,8 +11,7 @@ const RoutePage = () => {
     const [long, setLong] = useState(0)
     const [currentPosition, setCurrentPosition] = useState({})
     const [activityRoute, setActivityRoute] = useState([])
-    const [loaded, setLoaded] = useState(false)
-    const user = useSelector(state => state.session.user);
+   
     const [map, setMap] = useState(null)
     const dispatch = useDispatch()
     let {routeid} = useParams()
@@ -80,7 +79,7 @@ const RoutePage = () => {
     return (
         <div className="home_page__container">
             <div>
-                <span>{selectedRoute?.name}</span>
+                <h2>{selectedRoute?.name}</h2>
                 <span>{selectedRoute?.distance.toFixed(2)} Miles</span>
             </div>
             <div>

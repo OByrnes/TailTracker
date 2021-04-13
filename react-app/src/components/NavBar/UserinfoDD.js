@@ -7,10 +7,18 @@ import "./index.css"
 const UserinfoDD = ({setDDOpen}) =>{
     return (
         <div className="DropDown__container">
-            <span className="clickable closeDD" onClick={()=>setDDOpen(false)}>X</span>
+            <div className="clickable closeDD" onClick={()=>setDDOpen(false)} >
+            <span >X</span>
+            </div>
+            <div>
             <LogoutButton />
+            </div>
+            <div>
             <NavLink to="/remove-dog">Remove a dog</NavLink>
+            </div>
+            <div>
             <NavLink to="/resources">Resources</NavLink>
+            </div>
         </div>
     )
 

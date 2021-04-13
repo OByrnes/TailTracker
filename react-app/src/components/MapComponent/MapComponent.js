@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { GoogleMap, LoadScript, Marker, InfoWindow, useJsApiLoader, DistanceMatrixService, Polyline, PolylineProps, DrawingManager } from '@react-google-maps/api';
+import { GoogleMap, Marker, useJsApiLoader, Polyline } from '@react-google-maps/api';
 import { useHistory } from "react-router-dom";
 import Geocode from 'react-geocode'
 import "./index.css"
@@ -88,7 +88,7 @@ if(roundTrip){
 setActivityDistance(distance)
 setActivityRoute(newActivityRoute)
 
-}, [markerList, setMarkerList])
+}, [markerList, setMarkerList, roundTrip])
 
 
 // set location_type filter . Its optional.

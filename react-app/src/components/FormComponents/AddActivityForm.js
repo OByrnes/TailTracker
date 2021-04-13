@@ -55,7 +55,7 @@ const AddanActivity = () => {
         
         dogsIds.forEach( async dog_id =>{
             let dateString = new Date(date).toLocaleString()
-        
+            
             let newActivity = new FormData()
             newActivity.append('image',image )
             newActivity.append('name', name)
@@ -63,8 +63,12 @@ const AddanActivity = () => {
              newActivity.append("activityType_id",activityType)
              newActivity.append("minutes",minutes)
              newActivity.append("date", dateString)
+             if (routeId !== 0){
+                 newActivity.append("route_id", routeId)
+
+             }
              setImageLoading(true)
-            let res = await fetch("/api/activities", {
+            let res = await fetch("/api/activities/", {
                 method: "POST",
                 body: newActivity
             })
@@ -115,6 +119,7 @@ const AddanActivity = () => {
                     <label>What kind of exercise was it?</label>
                     <div className="custom-select">
                     <select value={activityType} onChange={(e)=>setActivityType(e.target.value)}>
+                        <option></option>
                         {activityTypes? activityTypes.map(activity_type => (
                             <option value={activity_type.id} key={activity_type.id}>{activity_type.type}</option>
                         )):null}
@@ -129,6 +134,7 @@ const AddanActivity = () => {
                     <label>Route you took?</label>
                     <div className="custom-select">
                     <select value={routeId} onChange={(e)=>setRouteId(e.target.value)}>
+                        <option></option>
                         {routeList? routeList.map(existingroute => (
                             <option key={routeId} value={existingroute.id}>{existingroute.name}</option>
                         )):null }
@@ -150,7 +156,8 @@ const AddanActivity = () => {
                 <button className="form__button" type="submit">Add activity</button>
             </form>
 
-        </div></div>
+        </div>
+        </div>
     )
 
 }

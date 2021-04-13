@@ -6,6 +6,9 @@
     display: flex;
     flex-direction: column;
 }
+.map_page__container span{
+    color: #247BA0;
+}
 .map_page__container h2{
     color: #247BA0;
 }
