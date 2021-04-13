@@ -11,7 +11,7 @@ const DogTableRow = ({dog}) => {
         activity.date = activityDate
         return activity
     })
-    let currentDay = new Date()
+    
     
     Date.prototype.subtractDays = function(days) {
         let date = new Date(this.valueOf());
@@ -19,21 +19,14 @@ const DogTableRow = ({dog}) => {
         return date;
     }
     let date = new Date();
-    let sixdaysago=date.subtractDays(6)
-    let fivedaysago = date.subtractDays(5)
-    let fourdaysago =date.subtractDays(4)
-    let threedaysago = date.subtractDays(3)
-    let twodaysago = date.subtractDays(2)
-    let yesterday = date.subtractDays(1)
-
    
-    let activitiestoday= activities.filter( activity => activity.date.toLocaleDateString() == date.toLocaleDateString())
-    let activitiessixdaysago= activities.filter( activity => activity.date.toLocaleDateString() == date.subtractDays(6).toLocaleDateString())
-    let activitiesfivedaysago = activities.filter( activity => activity.date.toLocaleDateString() == date.subtractDays(5).toLocaleDateString())
-    let activitiesfourdaysago =activities.filter( activity => activity.date.toLocaleDateString() == date.subtractDays(4).toLocaleDateString())
-    let activitiesthreedaysago = activities.filter( activity => activity.date.toLocaleDateString() == date.subtractDays(3).toLocaleDateString())
-    let activitiestwodaysago = activities.filter( activity => activity.date.toLocaleDateString() == date.subtractDays(2).toLocaleDateString())
-    let activitiesyesterday = activities.filter( activity => activity.date.toLocaleDateString() == date.subtractDays(1).toLocaleDateString())
+    let activitiestoday= activities.filter( activity => activity.date.toLocaleDateString() === date.toLocaleDateString())
+    let activitiessixdaysago= activities.filter( activity => activity.date.toLocaleDateString() === date.subtractDays(6).toLocaleDateString())
+    let activitiesfivedaysago = activities.filter( activity => activity.date.toLocaleDateString() === date.subtractDays(5).toLocaleDateString())
+    let activitiesfourdaysago =activities.filter( activity => activity.date.toLocaleDateString() === date.subtractDays(4).toLocaleDateString())
+    let activitiesthreedaysago = activities.filter( activity => activity.date.toLocaleDateString() === date.subtractDays(3).toLocaleDateString())
+    let activitiestwodaysago = activities.filter( activity => activity.date.toLocaleDateString() === date.subtractDays(2).toLocaleDateString())
+    let activitiesyesterday = activities.filter( activity => activity.date.toLocaleDateString() === date.subtractDays(1).toLocaleDateString())
     return (
         <>
         <tr>
@@ -42,8 +35,8 @@ const DogTableRow = ({dog}) => {
             </td>
                            <td>
                             {activitiessixdaysago.map(activity => (
-                    <NavLink to={`/activities/${activity.id}`}>
-                    <div key={activity.id} className="activity_thumbnail">
+                    <NavLink key={activity.id} to={`/activities/${activity.id}`}>
+                    <div  className="activity_thumbnail">
                         <span>{activity.date.toLocaleTimeString()}</span>
                         <span>{activity.minutes} Minutes</span>
                         <span>{activity.activityType.type}</span>
@@ -53,8 +46,8 @@ const DogTableRow = ({dog}) => {
                            </td>
                            <td>
                             {activitiesfivedaysago.map(activity => (
-                    <NavLink to={`/activities/${activity.id}`}>
-                    <div key={activity.id} className="activity_thumbnail">
+                    <NavLink key={activity.id} to={`/activities/${activity.id}`}>
+                    <div  className="activity_thumbnail">
                         <span>{activity.date.toLocaleTimeString()}</span>
                         <span>{activity.minutes} Minutes</span>
                         <span>{activity.activityType.type}</span>
@@ -65,8 +58,8 @@ const DogTableRow = ({dog}) => {
                            </td>
                            <td>
                             {activitiesfourdaysago.map(activity => (
-                            <NavLink to={`/activities/${activity.id}`}>
-                    <div key={activity.id} className="activity_thumbnail">
+                            <NavLink key={activity.id} to={`/activities/${activity.id}`}>
+                    <div className="activity_thumbnail">
                         <span>{activity.date?.toLocaleTimeString()}</span>
                         <span>{activity.minutes} Minutes</span>
                         <span>{activity.activityType.type}</span>
@@ -77,8 +70,8 @@ const DogTableRow = ({dog}) => {
                            </td>
                            <td>
                             {activitiesthreedaysago.map(activity => (
-                    <NavLink to={`/activities/${activity.id}`}>
-                    <div key={activity.id} className="activity_thumbnail">
+                    <NavLink key={activity.id} to={`/activities/${activity.id}`}>
+                    <div className="activity_thumbnail">
                         <span>{activity.date?.toLocaleTimeString()}</span>
                         <span>{activity.minutes} Minutes</span>
                         <span>{activity.activityType.type}</span>
@@ -88,8 +81,8 @@ const DogTableRow = ({dog}) => {
                            </td>
                            <td>
                             {activitiestwodaysago.map(activity => (
-                                <NavLink to={`/activities/${activity.id}`}>
-                    <div key={activity.id} className="activity_thumbnail">
+                                <NavLink key={activity.id} to={`/activities/${activity.id}`}>
+                    <div className="activity_thumbnail">
                         <span>{activity.date.toLocaleTimeString()}</span>
                         <span>{activity.minutes} Minutes</span>
                         <span>{activity.activityType.type}</span>
@@ -99,8 +92,8 @@ const DogTableRow = ({dog}) => {
                            </td>
                            <td>
                             {activitiesyesterday.map(activity => (
-                    <NavLink to={`/activities/${activity.id}`}>
-                    <div key={activity.id} className="activity_thumbnail">
+                    <NavLink key={activity.id} to={`/activities/${activity.id}`}>
+                    <div  className="activity_thumbnail">
                         <span>{activity.date?.toLocaleTimeString()}</span>
                         <span>{activity.minutes} Minutes</span>
                         <span>{activity.activityType.type}</span>
@@ -110,8 +103,8 @@ const DogTableRow = ({dog}) => {
                            </td>
                            <td>
                             {activitiestoday.length ? activitiestoday.map(activity => (
-                    <NavLink to={`/activities/${activity.id}`}>
-                    <div key={activity.id} className="activity_thumbnail">
+                    <NavLink key={activity.id} to={`/activities/${activity.id}`}>
+                    <div className="activity_thumbnail">
                         <span>{activity.date?.toLocaleTimeString()}</span>
                         <span>{activity.minutes} Minutes</span>
                         <span>{activity.activityType?.type}</span>
@@ -124,25 +117,25 @@ const DogTableRow = ({dog}) => {
                        <tr>
                            <td></td>
                            <td>
-                               {activitiessixdaysago.reduce((a,b) => a+ (b.minutes*b.activityType.exertion/6 || 0), 0)} Points
+                               {activitiessixdaysago.reduce((a,b) => a+ (b.minutes*b.activityType.exertion/6 || 0), 0).toFixed(1)} Points
                            </td>
                            <td>
-                               {activitiesfivedaysago.reduce((a,b) => a+ (b.minutes*b.activityType.exertion/6 || 0), 0)} Points
+                               {activitiesfivedaysago.reduce((a,b) => a+ (b.minutes*b.activityType.exertion/6 || 0), 0).toFixed(1)} Points
                            </td>
                            <td>
-                               {activitiesfourdaysago.reduce((a,b) => a+ (b.minutes*b.activityType.exertion/6 || 0), 0)} Points
+                               {activitiesfourdaysago.reduce((a,b) => a+ (b.minutes*b.activityType.exertion/6 || 0), 0).toFixed(1)} Points
                            </td>
                            <td>
-                               {activitiesthreedaysago.reduce((a,b) => a+ (b.minutes*b.activityType.exertion/6 || 0), 0)} Points
+                               {activitiesthreedaysago.reduce((a,b) => a+ (b.minutes*b.activityType.exertion/6 || 0), 0).toFixed(1)} Points
                            </td>
                            <td>
-                               {activitiestwodaysago.reduce((a,b) => a+ (b.minutes*b.activityType.exertion/6 || 0), 0)} Points
+                               {activitiestwodaysago.reduce((a,b) => a+ (b.minutes*b.activityType.exertion/6 || 0), 0).toFixed(1)} Points
                            </td>
                            <td>
-                               {activitiesyesterday.reduce((a,b) => a+ (b.minutes*b.activityType.exertion/6 || 0), 0)} Points
+                               {activitiesyesterday.reduce((a,b) => a+ (b.minutes*b.activityType.exertion/6 || 0), 0).toFixed(1)} Points
                            </td>
                            <td>
-                               {activitiestoday.reduce((a,b) => a+ (b.minutes*b.activityType.exertion/6 || 0), 0)} Points
+                               {activitiestoday.reduce((a,b) => a+ (b.minutes*b.activityType.exertion/6 || 0), 0).toFixed(1)} Points
                            </td>
                        </tr>
         </>

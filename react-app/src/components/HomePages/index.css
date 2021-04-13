@@ -1,23 +1,80 @@
 .home_page__container{
     display:flex;
     width: 95%;
+    padding-top: 35px;
     flex-direction: column;
     margin-left: 100px;
+    background-image:
+    linear-gradient(to bottom,rgba(255, 224, 102,.52), rgba(242, 95, 92, 0.52), rgba(112, 193, 179, 0.83)),
+    url('../../images/dogwalker2.png');
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    color: white;
+    
 }
+.daily-goal__container{
+    font-size: 18px;
+    background-color: rgba(36, 123, 160, 0.83);
+    padding-top: 45px;
+    justify-content: space-around;
+    padding-bottom: 45px;
+    height: max-content;
+    padding-left: 35px;
+    
+}
+.dog__info .form__button{
+    background-color: rgba(36, 123, 160, 0.83);
+    margin-bottom: 0px;
+}
+
+.daily-goal__container .form__button{
+
+    margin-bottom: 5px;
+    background-color: rgba(112, 193, 179, 0.93);
+    transition: background-color 0.25 ease;
+    outline: 0;
+    border: none;
+    text-decoration: none; 
+    margin-left: 35px;
+  }
+  .form__button:hover {
+    background-color: #2b5c70;
+  }
+
 .dogs__container{
     padding-top: 25px;
     display: flex;
     justify-content: space-around;
-    background-color: #247ba0;
     padding-bottom: 80px;
 }
 .dog__thumbnail img{
+    border-radius: 25px;
     max-width: 300px;
     min-width: 300px;
+}
+.dog__info{
+    font-size: 18px;
+    line-height: 1.4;
+    display: flex;
+    flex-direction: column;
+}
+.dog__content{
+    margin: 0 auto;
+    min-width: 500px;
+    display: flex;
+    padding-bottom: 130px;
+}
+.dog__content img{
+    margin: 0 auto;
 }
 .dog__thumbnail{
     display: flex;
     flex-direction: column;
+    width: 500px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color:  rgba(112, 193, 179, 0.83);
 }
 .dog__thumbnail div{
     display: flex;
@@ -28,25 +85,35 @@
 .dog_Name{
     font-size: 25px;
     font-weight: bold;
+    text-align: center;
+    margin-bottom: 25px;
 }
 .dog_page{
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 .dog_activities__container{
     display: flex;
-    
+   
 }
+
 .Activities{
     width: 100%;
 }
 .activity_thumbnail{
     display: flex;
     flex-direction: column;
+    margin-bottom: 9px;
+    border-bottom: 1px solid gray;
 }
 table {
     border-collapse: collapse;
+    background-color: white;
+    color:  #50514f;
   }
 table td{
+    
     width: 10%;
 }
 .activity-table {
@@ -57,7 +124,6 @@ table td{
 
 .activity-table td, .activity-table th {
     border: 1px solid #ddd;
-    padding: 8px;
 }
 
 .activity-table tr:nth-child(even){background-color: #f2f2f2;}

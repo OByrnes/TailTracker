@@ -6,12 +6,12 @@ const SplashSidebar = ({setShowSidebar, setLogin, setSignup})=>{
     
     return (
         <div className="splashSidebar__container">
-                <div className="close_sidebar" onClick={()=>console.log(false)}>X</div>
+                <div className="close_sidebar clickable" onClick={()=>setShowSidebar(false)}>X</div>
                 <ul>
                     <li><NavLink to="/features">FEATURES</NavLink></li>
-                    <li onClick={setLogin(true)}> LOG IN</li>
-                    <li onClick={setSignup(true)}>SIGN UP</li>
-                    <li> <NavLink to="/sources">Resources</NavLink></li>
+                    <li className="clickable" onClick={()=>setLogin(true)}> LOG IN</li>
+                    <li className="clickable" onClick={()=>setSignup(true)}>SIGN UP</li>
+                    <li> <NavLink to="/resources">Resources</NavLink></li>
                 </ul>
 
         </div>

@@ -11,6 +11,7 @@ from .api.auth_routes import auth_routes
 from .api.breeds_routes import breeds_routes
 from .api.dogs_routes import dogs_routes
 from .api.activity_routes import activity_routes
+from .api.dogroutes_routes import dogroutes_routes
 
 from .seeds import seed_commands
 
@@ -37,6 +38,7 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(breeds_routes, url_prefix="/api/breeds")
 app.register_blueprint(dogs_routes, url_prefix="/api/dogs")
 app.register_blueprint(activity_routes, url_prefix="/api/activities")
+app.register_blueprint(dogroutes_routes, url_prefix="/api/dogroutes")
 db.init_app(app)
 Migrate(app, db, compare_type=True)
 

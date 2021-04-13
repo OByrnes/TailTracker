@@ -42,6 +42,7 @@
 .SignUpSplash__container{
     border: 2px solid #F25F5C;
     width: 500px;
+    background-color: white;
     margin: 15px;
     padding: 16px 10px;
     display: flex;
@@ -111,7 +112,8 @@
 .splashSidebar__container{
     position: absolute;
     right: 0px;
-    top: 95px;
+    z-index: 5;
+    top: 90px;
     width: 200px;
     background-color: white;
     list-style-type: none;
@@ -291,6 +293,16 @@ footer{
   }
   .closeIco:hover {
     cursor: pointer;
-    color: green;
+    color: #247ba0ff;
     outline: 0;
+  }
+  .splash-section0{
+    background-image:
+    linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(80, 81, 79, 0.73)),
+    url('../../images/roadmap.jpg');
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+    color: white;
+    padding: 20px;
   }

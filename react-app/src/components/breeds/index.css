@@ -1,14 +1,31 @@
 .Breeds-Page__container{
+    background-image:
+      linear-gradient(to bottom,rgba(255, 224, 102,.52), rgba(242, 95, 92, 0.52), rgba(112, 193, 179, 0.83)),
+      url('../../images/dogwalker2.png');
+      width: 100%;
+      min-height: 1000px;
+      background-size: contain;
+      
+      color: white;
     margin-left: 100px;
     display: flex;
     flex-direction: column;
     
 }
+
 .breed-List__container img{
+    border-radius: 25px;
     max-width: 290px;
     max-height: 300px;
 }
+.left-breed img{
+    max-width: 490px;
+    max-height: 600px;
+}
 .breed-List__container{
+    border-radius: 25px;
+    margin:20px;
+    background-color: #505050;
     display: flex;
     flex-direction: column;
     width: 500px;
@@ -18,6 +35,11 @@
     align-items: center;
     border-right: solid #50514f5d 6px;
     
+}
+.breed-List__container span{
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
 }
 .breed_name__container{
     height: 55px;
@@ -32,20 +54,46 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+.outer-page__container{
+    padding-top: 150px;
+    background-image:
+    linear-gradient(to bottom,rgba(255, 224, 102,.52), rgba(242, 95, 92, 0.52), rgba(112, 193, 179, 0.83)),
+    url('../../images/dogwalker2.png');
+    width: 100%;
+    min-height: 800px;
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 100px;
+}
 .breed-Page__container{
-    display:flex;
-    margin-left: 80px;
+    
+    background-color: #a09f9f;
+    color: white;
+    width: 80%;
+  margin-left: 100px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+
+    
 }
 .breed-Page__container div{
+    
     display:flex;
     flex-direction: column;
     font-size: 20px;
     margin-left: 20px;
+    margin: 0 auto;
 }
 .breed-Page__container div:first-child{
+    
+    width: 60%;
     margin-top: 25px;
-    border-right: solid #50514f5d 6px;
     padding-bottom: 30px;
+    padding: 10px 16px;
     align-items: center;
 }
 .breed_name{
@@ -55,6 +103,7 @@
     color: #247ba0;
 }
 .breed_info{
+    width: 60%;
     align-content: center;
     justify-content: center;
 }

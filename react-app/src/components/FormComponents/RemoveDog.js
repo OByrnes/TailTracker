@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from "react"
+import React, { useState} from "react"
 import { useHistory } from "react-router-dom"
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
 import "./index.css"
-import logo from "../../images/TTLogo1png.png";
+
 
 const RemoveDogComponent = () => {
     const [dogsIds, setDogsIds] = useState([])
@@ -23,7 +23,7 @@ const RemoveDogComponent = () => {
     const RemoveDogs = (e)=> {
         e.preventDefault()
         dogsIds.forEach( async dog => {
-            let res = await fetch(`api/dogs/delete/${dog}`,{ method: 'DELETE' })
+            let res = await fetch(`api/dogs/delete/${dog}/`,{ method: 'DELETE' })
             if (res.ok){
                 history.push("/")
             }

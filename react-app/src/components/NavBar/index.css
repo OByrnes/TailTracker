@@ -25,6 +25,11 @@ background-color: #50514f;
 .last{
   margin-bottom: 30px;
 }
+.closeDD{
+  display: flex;
+  align-items: right;
+  
+}
 
 .DropDown__container{
   position: absolute;
@@ -34,6 +39,17 @@ background-color: #50514f;
   flex-direction: column;
   background-color: white;
   width: 200px;
+  height: 500px;
   top: 200px;
   left:100px;
+}
+.DropDown__container div{
+  border-bottom: solid 2px #50514f;
+  height: 25%;
+  width: 100%;
+
+}
+.DropDown__container div:hover{
+  background-color: #4986a0af;
+
 }

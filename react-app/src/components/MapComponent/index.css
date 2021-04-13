@@ -1,0 +1,65 @@
+.map_page__container{
+    display: flex;
+    flex-direction: column;
+}
+.map_page__container div{
+    display: flex;
+    flex-direction: column;
+}
+.map_page__container span{
+    color: #247BA0;
+}
+.map_page__container h2{
+    color: #247BA0;
+}
+
+.map-button{
+    background-color: #247BA0;
+    border-radius: 7px;
+    margin-top: 9px;
+    font-style: normal;
+    color: white;
+    font-weight: 400;
+    text-align: center;
+    white-space: normal;
+    display: block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    min-height: 45px;
+    width: 60%;
+    padding: 0 1.14285714em;
+    padding: 0 1.33333333rem;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #247BA0;
+  
+    border-radius: 9px;
+    float: none;
+    cursor: pointer;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -ms-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+#delete-btn{
+    background-color: rgba(218, 121, 42, 0.739);
+
+}
+#delete-btn:hover {
+    background-color: rgb(218, 98, 42);
+}
+.form__button:hover {
+    background-color: #2b5c70;
+  }
+#button-holder{
+    display: flex;
+    flex-direction: row;
+    padding: 35px;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}

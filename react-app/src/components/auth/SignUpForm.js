@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Redirect, NavLink } from "react-router-dom";
-// import {useDispatch, useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 // import { signUp } from "../../services/auth";
-// import * as sessionActions from '../../store/session'
+import * as sessionActions from '../../store/session'
 import logo from "../../images/TTLogo1png.png";
 
 const SignUpForm = ({
@@ -11,33 +11,32 @@ const SignUpForm = ({
   setSignup,
   setLogin,
 }) => {
-  // const dispatch = useDispatch()
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const dispatch = useDispatch()
+  
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [errors, setErrors] = useState([]);
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
-  // const user = useSelector(state => state.session.user);
+  const user = useSelector(state => state.session.user);
 
 
   const onSignUp = async (e) => {
-  //   e.preventDefault();
-  //   if (password === repeatPassword) {
-  //   let successfulSignUp = await dispatch(sessionActions.signUp(username, firstName, lastName, email, password))
-  //       .catch(async (res) => {
-  //         const data = await res.json();
-  //         if (data && data.errors) setErrors(data.errors)
-  //       })
-  //       setErrors(successfulSignUp)
-  //     }
-  // };
-  // if (user) {
-  //   dispatch(createNotebook("first_Notebook",user.id))
-  //   return (
-  //   <Redirect to="/home"/>
-  // )
+    e.preventDefault();
+    if (password === repeatPassword) {
+    let successfulSignUp = await dispatch(sessionActions.signUp(username, email, password))
+        .catch(async (res) => {
+          const data = await res.json();
+          if (data && data.errors) setErrors(data.errors)
+        })
+        setErrors(successfulSignUp)
+      }
+  };
+  if (user) {
+    
+    return (
+    <Redirect to="/home"/>
+  )
 }
 
   const loginButton = () => {
@@ -49,12 +48,7 @@ const SignUpForm = ({
     setUsername(e.target.value);
   };
 
-  const updateFirstName = (e) => {
-    setFirstName(e.target.value);
-  };
-  const updateLastName = (e) => {
-    setLastName(e.target.value);
-  };
+  
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
@@ -102,12 +96,12 @@ const SignUpForm = ({
           {/* <label>User Name</label> */}
           <input
             type="text"
-            name="name"
+            name="username"
             placeholder="Name"
-            onChange={updateFirstName}
-            value={firstName}
+            onChange={updateUsername}
+            value={username}
           ></input>
-          {"Name" in errorCheck ? <div className="form__error__container"><p className="form__error__text">{errorCheck.firstName}</p></div> : null}
+          {"Name" in errorCheck ? <div className="form__error__container"><p className="form__error__text">{errorCheck.username}</p></div> : null}
   
         </div>
         <div>

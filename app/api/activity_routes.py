@@ -20,14 +20,14 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 
-@activity_routes.route('/activitytypes')
-def get_all_breeds():
+@activity_routes.route('/activitytypes/')
+def get_all_activityTypes():
     activityTypesList = ActivityType.query.all()
     return jsonify({"activityTypes": [actType.to_dict()
                                       for actType in activityTypesList]})
 
 
-@activity_routes.route("", methods=['POST'])
+@activity_routes.route("/", methods=['POST'])
 def add_activity():
     url = ''
     if "image" in request.files:
@@ -47,11 +47,14 @@ def add_activity():
     form = NewActivityForm(request.form)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate():
+        actDate = datetime.datetime.strptime(request.form.get("date"), '%m/%d/%Y, %I:%M:%S %p')
+        print(actDate)
         newActivity = DogActivity(dog_id=form.data["dog_id"],
                                   name=form.data['name'],
                                   activityType_id=form.data["activityType_id"],
                                   activity_img=url,
                                   minutes=form.data["minutes"],
+                                  route_id=form.data["route_id"],
                                   date=request.form.get("date"))
         db.session.add(newActivity)
         db.session.commit()
@@ -59,7 +62,7 @@ def add_activity():
     return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 
-@activity_routes.route("/addimage/<int:activity_id>", methods=['PATCH'])
+@activity_routes.route("/addimage/<int:activity_id>/", methods=['PATCH'])
 def add_activity_image(activity_id):
     if "image" not in request.files:
         return {"errors": "image required"}, 400
@@ -86,7 +89,7 @@ def add_activity_image(activity_id):
     return updatedActivity.to_dict()
 
 
-@activity_routes.route("/addcomment/<int:activity_id>", methods=["POST"])
+@activity_routes.route("/addcomment/<int:activity_id>/", methods=["POST"])
 @login_required
 def add_comment(activity_id):
     activity = DogActivity.query.filter(DogActivity.id == activity_id).first()
@@ -95,7 +98,7 @@ def add_comment(activity_id):
     return activity.to_dict()
 
 
-@activity_routes.route("/delete/<int:activity_id>", methods=["DELETE"])
+@activity_routes.route("/delete/<int:activity_id>/", methods=["DELETE"])
 @login_required
 def delete_activity(activity_id):
     activity = DogActivity.query.filter(DogActivity.id == activity_id).first()

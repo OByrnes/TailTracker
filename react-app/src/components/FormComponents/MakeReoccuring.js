@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import {useSelector, useDispatch} from "react-redux"
+import React, { useState } from "react";
+import {useSelector} from "react-redux"
 import {useParams } from "react-router";
 
-const MakeReoccuring = (showReoccuring, setShowReoccuring ) => {
+const MakeReoccuring = ({showReoccuring, setShowReoccuring} ) => {
     const [days, setDays] = useState([])
     const [dogsIds, setDogsIds] = useState([])
     const user = useSelector(state => state.session.user);
@@ -75,11 +75,12 @@ const MakeReoccuring = (showReoccuring, setShowReoccuring ) => {
                     let newActivity = new FormData()
                     newActivity.append('name', activity.name)
                      newActivity.append("dog_id",dog_id)
+                     newActivity.append("routeId", activity.route_id)
                      newActivity.append("activityType_id",activity.activityType.id)
                      newActivity.append("minutes",activity.minutes)
                      newActivity.append("date", dateString)
                      
-                    let res = await fetch("/api/activities", {
+                    let res = await fetch("/api/activities/", {
                         method: "POST",
                         body: newActivity
                     })

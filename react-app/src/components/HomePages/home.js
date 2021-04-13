@@ -1,25 +1,30 @@
 import React from "react"
-import { NavLink } from 'react-router-dom';
-import {useSelector, useDispatch} from "react-redux"
+import { NavLink, useHistory } from 'react-router-dom';
+import {useSelector} from "react-redux"
 import DogTableRow from "./DogTableRow"
 import "./index.css"
 
 
 const HomePage = () => {
-    const breeds = useSelector(state => state?.breeds?.breeds?.breeds[0])
+    
     const user = useSelector(state => state.session.user);
     let date = new Date();
+    const history = useHistory()
     Date.prototype.subtractDays = function(days) {
         let date = new Date(this.valueOf());
         date.setDate(date.getDate() - days);
         return date;
     }
+    if (user.dogs.length=== 0){
+        history.push("/adddog")
+    }
     return (
         <div className="home_page__container">
+           
             <div className="dogs__container">
                 {user.dogs.map(dog => (
-                    <NavLink to={`/dogs/${dog.id}`}>
-                    <div className="dog__thumbnail" key={dog.id}>
+                    <NavLink key={dog.id} to={`/dogs/${dog.id}`}>
+                    <div className="dog__thumbnail" >
                         <div>
                         <span className="dog_Name">{dog.name}</span>
                         <img src={dog.dog_img} alt="dog"/>
@@ -50,7 +55,7 @@ const HomePage = () => {
                    </thead>
                    <tbody>
                        {user.dogs.map(dog =>(
-                           <DogTableRow dog={dog} />
+                           <DogTableRow key={dog.id} dog={dog} />
 
                        ))}
                        </tbody>

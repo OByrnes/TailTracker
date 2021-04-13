@@ -7,13 +7,11 @@ import * as sessionActions from "./store/session"
 import Splash from "./components/splash/SplashPage"
 import NavBar from "./components/NavBar/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import UsersList from "./components/UsersList";
-import User from "./components/User";
-import { authenticate } from "./services/auth";
 import HomePage from "./components/HomePages/home";
 import DogPage from "./components/HomePages/DogPage";
-import { getAllBreeds } from "./store/breeds";
 import AddaDog from "./components/FormComponents/AddDogForm";
+import AddRouteForm from "./components/FormComponents/AddRouteForm"
+import RoutePage from "./components/HomePages/RoutePage"
 import RemoveDogComponent from "./components/FormComponents/RemoveDog"
 import AddanActivity from "./components/FormComponents/AddActivityForm";
 import BreedsPage from "./components/breeds/BreedsPage";
@@ -58,12 +56,7 @@ function App() {
         <Route path="/resources">
           <Resource />
         </Route>
-        <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
-          <UsersList/>
-        </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
-          <User />
-        </ProtectedRoute>
+        
         <ProtectedRoute path="/home" exact={true} authenticated={authenticated}>
           <HomePage />
         </ProtectedRoute>
@@ -87,6 +80,12 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/remove-dog" exact={true}>
           <RemoveDogComponent />
+        </ProtectedRoute>
+        <ProtectedRoute path="/routes" exact={true}>
+          <AddRouteForm />
+        </ProtectedRoute>
+        <ProtectedRoute path="/routes/:routeid" exact={true}>
+          <RoutePage />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

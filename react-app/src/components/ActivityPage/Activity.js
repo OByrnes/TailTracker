@@ -5,6 +5,7 @@ import { useHistory, useParams } from "react-router";
 import { NavLink } from "react-router-dom";
 import MakeReoccuring from "../FormComponents/MakeReoccuring";
 import "./index.css"
+import { getAllRoutes } from "../../store/routes";
 
 const ActivityPage = () => {
     
@@ -13,26 +14,14 @@ const ActivityPage = () => {
     const [comment, setComment] = useState('')
     const [showReoccuring, setShowReoccuring] = useState(false)
     const user = useSelector(state => state.session.user);
-    let dogs = user.dogs
+    let routes = useSelector(state => state.routes?.Routes?.routes)
+   
+    
     const history = useHistory()
-    // function dayofWeekInMonth(m, y, day) {
-    //     var firstDayofMonth = new Date( y,m,1 )
-    //     let daysOfMonth = []
-    //     let earliestDay = day-firstDayofMonth.getDay()+1
-    //     if (earliestDay < 0 ){
-    //         earliestDay += 7
-    //     }
-    //     let days = new Date(y, m , 0).getDate()
-    //     for (let i= earliestDay; i<days; i+=7){
-    //         daysOfMonth.push(new Date(y, m, i))
-    //     }
-        
-    //     return daysOfMonth
-    //   }
-    //   let dayofWeekList = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday","Friday","Saturday"]
+    
       
       const {activityid} = useParams()
-      
+      const dispatch = useDispatch()
       let allActivities = []
       let activity;
       if(user){
@@ -47,6 +36,15 @@ const ActivityPage = () => {
               })
           });
         }
+        let route;
+        useEffect( ()=>{
+            dispatch(getAllRoutes()) 
+        },[])
+        if (routes && activity.route){
+            
+            route = routes.filter(R => R.id == activity.route )[0]
+        
+        }
         useEffect(()=>{
             setComment(activity.comment)
         },[activity])
@@ -54,27 +52,7 @@ const ActivityPage = () => {
             setShowReoccuring(false)
         }
         
-// const handleDay = (e) => {
-//     let array =[]
-//     let newdays= document.getElementsByClassName("DayCheck")
-//         for (let i=0; i< newdays.length; i++){
-//             if(newdays[i].checked){
-//                 array.push(newdays[i].value)
-//         }
-//         }
-//     setDays(array)
-//         }
-//         const addAnotherDog = () => {
-//             let array =[]
-//             let dogs_in_activity= document.getElementsByClassName("dogCheck")
-//             for (let i=0; i< dogs_in_activity.length; i++){
-//               if(dogs_in_activity[i].checked){
-//                 array.push(dogs_in_activity[i].value)
-//               }
-//             } 
-//             setDogsIds(array)
-     
-//          }
+        
         const addComment = async (e) => {
             e.preventDefault()
             let activityForm = new FormData()
@@ -108,7 +86,7 @@ const ActivityPage = () => {
             const formData = new FormData();
             formData.append("image", image);
             setImageLoading(true);
-        const res = await fetch(`/api/activities/addimage/${activity.id}`, {
+        const res = await fetch(`/api/activities/addimage/${activity.id}/`, {
             method: "PATCH",
             body: formData,
         });
@@ -125,36 +103,53 @@ const ActivityPage = () => {
     return (
         <div className="activity_page__container">
             <div className="activities__list">
-                <div>
+                <div className="heading__container">
                     <h4>All Activities</h4>
                 </div>
                 {allActivities.map(act => (
                     <NavLink key={act.id} to={`/activities/${act.id}`}>
                     <div className="activity_list__item" >
-                        <span>{act.date.toLocaleString()}</span>
-                        <span>{act.activityType.type}</span>
+                        <span className="activity-name">{act.name}</span>
+                        <span>{new Date(act.date).toLocaleString()}</span>
                     </div>
                     </NavLink>
                 ))}
             </div>
             <div className="activity-main-content__container">
-            <div className="activity_thumbnail">
-                        {activity.name? <span>{activity.name}</span>:null}
-                        {activity.activity_img? <img src={activity.activity_img} alt="activity"/>:(<form onSubmit={addActivityPicture}><div>
+                <div className="header__container">
+                    {activity.name? <span>{activity.name}</span>:null}
+                </div >
+                <div className="top-content">
+                <div className="activity-info">
+                        {activity.activity_img? <div className="img_container"><img src={activity.activity_img} alt="activity"/></div>:(<div className="img_container form__container"><form onSubmit={addActivityPicture}><div>
                 <input type="file" name="dogImg" accept="image/*" onChange={updateImage}/>
-                </div><button disabled={!image} type='submit'>Add Picture</button></form>)}
-                        <span>{activity.date.toLocaleString()}</span>
+                </div><button disabled={!image} type='submit'>Add Picture</button></form></div>)}
+                {imageLoading?<span>Image Loading...</span>:null}
+                </div>
+                    <div className="activity-info__container">
+
+                        <span>{new Date(activity.date).toLocaleString()}</span>
                         <span>{activity.minutes} Minutes</span>
+                        {route? <div>
+                            <span>{route.name}  </span>
+                            <span>{route.distance.toFixed(2)} Miles</span>
+                            </div>:null}
                         <span>{activity.activityType.type}</span>
                         <span>Points {Math.floor(activity.minutes*activity.activityType.exertion/6)}</span>
+                        {activity.comment?<span>{activity.comment}</span>:<div className="form__container">
                         <form onSubmit={addComment}>
                             <textarea placeholder='add a comment..' value={comment} onChange={(e)=>setComment(e.target.value)} />
                             <button>Add Comment</button>
-                        </form>
-                        <button onClick={deleteActivity}>Delete Activity</button>
-                        <div><span>Is this a reoccurring activity? Add it according to your schedule</span></div>
-                        <button onClick={()=>setShowReoccuring(true)}>Make this Activity Reoccuring</button>
+                        </form></div>}
                     </div>
+
+                </div>
+                <div className="button-container">
+                    <button id="delete-btn" onClick={deleteActivity}>Delete Activity</button>
+                    <button className="clickable reocuring" onClick={()=>setShowReoccuring(true)}>Make this Activity Reoccuring</button>
+
+                </div>
+                    
             <div>
             <Modal
         isOpen={showReoccuring}
@@ -164,7 +159,7 @@ const ActivityPage = () => {
         onRequestClose={closeRecurring}
       >
         <div className="closeIcoOuterShell">
-          <button className="closeIcoShell" className="clickable" onClick={(e) => setShowReoccuring(false)}>
+          <button className="closeIco clickable"  onClick={(e) => setShowReoccuring(false)}>
             X
           </button>
         </div>
