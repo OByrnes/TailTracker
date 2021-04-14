@@ -1,0 +1,28 @@
+.outer-page__container>div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.feature-container>div{
+    display: flex;
+    flex-direction: row;
+    margin: 40px;
+}
+
+.feature-container{
+    font-size: 30px;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    border-radius: 25px;
+    display:flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    background-color: #0f3c5371;
+    margin: 20px;
+}
+.feature-container img{
+    max-width: 600px;
+    margin: 10px;
+}
