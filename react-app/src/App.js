@@ -18,6 +18,7 @@ import BreedsPage from "./components/breeds/BreedsPage";
 import BreedPage from "./components/breeds/BreedPage";
 import ActivityPage from "./components/ActivityPage/Activity";
 import Resource from "./components/ResourcesPage/Resource";
+import FeaturesPage from "./components/FeaturesPage/FeaturesPage";
 
 function App() {
   const dispatch = useDispatch()
@@ -55,6 +56,9 @@ function App() {
         </Route>
         <Route path="/resources">
           <Resource />
+        </Route>
+        <Route path="/features">
+          <FeaturesPage />
         </Route>
         
         <ProtectedRoute path="/home" exact={true} authenticated={authenticated}>
