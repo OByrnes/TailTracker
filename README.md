@@ -10,3 +10,6 @@ I created TailTracker so users could accurately assess how exercise helps their 
   * Python / Flask
   * Postgresql 
   * Sqlalchemy
+## Walkthrough
+![login_modal](https://github.com/Obyrnes/TailTracker/blob/main/image.jpg?raw=true)
+
