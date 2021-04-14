@@ -20,8 +20,8 @@ I created TailTracker so users could accurately assess how exercise helps their 
 * Home page to see all your dogs activities
 ![home_page](https://github.com/Obyrnes/TailTracker/blob/main/react-app/src/images/ImagesForTT/UserHomePageScreenShot.png?raw=true)
 * Dogs Home Page. Change your dogs Daily Exercise goal. Edit any of your dogs information and see recommendations based on the breed and age
-![home_page](https://github.com/Obyrnes/TailTracker/blob/main/react-app/src/images/ImagesForTT/UserHomePageScreenShot.png?raw=true)
-![daily goal_page](https://github.com/Obyrnes/TailTracker/blob/main/react-app/src/images/ImagesForTT/UserHomePageScreenShot.png?raw=true)
+![home_page](https://github.com/Obyrnes/TailTracker/blob/main/react-app/src/images/ImagesForTT/goalDogScreenShot.png?raw=true)
+![daily goal_page](https://github.com/Obyrnes/TailTracker/blob/main/react-app/src/images/ImagesForTT/ScreenShotDogHomePage.png?raw=true)
 * Add Activity. Choose What kind of activity it is, the length of the activity and the Route you took
 ![add activity page](https://github.com/Obyrnes/TailTracker/blob/main/react-app/src/images/ImagesForTT/AddActivity.png?raw=true)
 * Make that Activity reoccuring according to the day of the week for the month
