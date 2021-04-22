@@ -181,10 +181,23 @@ body {
     background-color: #2b5c70;
   }
   #Logout-Button{
-    position: absolute;
-    height: 300px;
-    width: 300px;
+    height: 60px;
+    width: 100%;
+    margin:0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 25px;
+    background-color: transparent;
+    border:none;
+    padding-bottom: 40px;
+    box-sizing: border-box;
+
+    text-align: center;
+
   }
+  
   .form__error__container{
     height: 15px;
     display: flex;
@@ -223,15 +236,15 @@ body {
     outline: none;
   }
   .closeIcoOuterShell {
-    width: 100%;
-    background-color: white;
+    min-width: 500px;
+    background-color: transparent;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     text-decoration: none;
     border: none;
     outline: 0;
-    margin-bottom: -55px;
+   margin-bottom: -95px;
     z-index: 55;
   }
   .closeIcoShell {
@@ -240,13 +253,19 @@ body {
     border: none;
     outline: 0;
     margin-right: 15px;
+    margin-bottom: -55px;
   }
   .closeIco {
     font-size: 30px;
     margin-top: 35px;
+    margin-bottom: -55px;
     background-color: transparent;
+    border-radius: 35px;
     outline: 0;
     color: gray;
+  }
+  .closeIco button{
+    border-radius: 35px;
   }
   .closeIco:hover {
     cursor: pointer;

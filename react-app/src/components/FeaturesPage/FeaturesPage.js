@@ -8,9 +8,11 @@ import ReRenderRoute from "../../images/ImagesForTT/WalkRouteRerender.png"
 import BreedsPageImg from "../../images/ImagesForTT/BreedsPage.png"
 import IndividualBreed from "../../images/ImagesForTT/IndividualBreed.png"
 import makeActivityReoccuring from "../../images/ImagesForTT/MakeReoccuring.png"
+import dogHomePage from "../../images/ImagesForTT/ScreenShotDogHomePage.png"
+import changeDailyGoal from "../../images/ImagesForTT/goalDogScreenShot.png"
 
 const FeaturesPage = () => {
-    const featuresList = [{feature:"Add all your dogs and see their activities for the week", img: AddDogScreenShot, img2: HomePage}, {feature:"Add Activities, add images to an activity and make activities reoccuring based on day of the week", img: AddActivity, img2:makeActivityReoccuring}, {feature:"Add the routes you take to get the distance and add that route to reoccuring activities", img: AddRoute, img2: ReRenderRoute}, {feature:"See information on Breeds", img: BreedsPageImg, img2: IndividualBreed} ]
+    const featuresList = [{feature:"Add all your dogs and see their activities for the week", img: AddDogScreenShot, img2: HomePage},{feature: "See recommendations for your dog and change your dogs daily goal, edit dog information or change dog image", img:dogHomePage, img2:changeDailyGoal}, {feature:"Add Activities, add images to an activity and make activities reoccuring based on day of the week", img: AddActivity, img2:makeActivityReoccuring}, {feature:"Add the routes you take to get the distance and add that route to reoccuring activities", img: AddRoute, img2: ReRenderRoute}, {feature:"See information on Breeds", img: BreedsPageImg, img2: IndividualBreed} ]
     return (
         <div className="outer-page__container">
             <div>

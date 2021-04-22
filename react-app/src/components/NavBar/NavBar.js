@@ -20,7 +20,7 @@ const NavBar = ({ setAuthenticated }) => {
       <div className="nav-logo__container top-home">
       <NavLink to="/home" exact={true} activeClassName="active">
       <div className="navIcon__holder" >
-        <img src={Logo} alt="logo"/>
+        <div id="logo"></div>
         <span>Home</span>
       </div>
       </NavLink>

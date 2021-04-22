@@ -5,6 +5,7 @@ import Geocode from 'react-geocode'
 import "./index.css"
 import deepcopy from 'deepcopy';
 import uuid from 'react-uuid'
+import markerIcon from "../../images/markerIconTT.png"
 
  
 const SimpleMap= () => {
@@ -19,6 +20,7 @@ const SimpleMap= () => {
     const [activityRoute, setActivityRoute] = useState([])
     const [markerListOrder, setMarkerListOrder] = useState([])
     const [roundTrip, setRoundTrip] = useState(false)
+    
     const history = useHistory()
     
     const addRouteToDatabase = async () => {
@@ -136,10 +138,13 @@ const deleteLastPoint = () => {
 }
 
 const onMarkerDragEnd = (e) => {
+    
     const lat = e.latLng.lat();
     const lng = e.latLng.lng();
-    let coords = e.domEvent.target.title
+    let coords = e.domEvent.path[1].title
+    
     markerList[coords] = {lat:lat, lng: lng}
+    // console.log("this marker has moved", lat, lng)
   };
 const addNewMarker = (e) =>{
     const lat = e.latLng.lat();
@@ -216,7 +221,7 @@ const onLoadPolyline = e => {
               <label className="container">
                 Round Trip
                 <input type="checkbox" value={true} onChange={(e)=>setRoundTrip(e.target.checked)}/>
-                <span class="checkmark"></span>
+                <span className="checkmark"></span>
               </label>
               </fieldset>
               </div>
@@ -228,24 +233,26 @@ const onLoadPolyline = e => {
           clickableIcons={false}
           zoom={18}
           center={currentPosition}
-          
           onUnmount={onUnmount}
           onClick={(e)=>addNewMarker(e)}
           >
             {Object.keys(markerList).map((marker) => (
-              <>
-               <Marker key={uuid()} position={markerList[marker]}
+              
+               <Marker key={uuid()} 
+               position={markerList[marker]}
                title={marker}
+               id={marker}
                onDragEnd={(e)=> onMarkerDragEnd(e)}
                draggable={true}
+               icon={markerIcon}
                streetView={false} />
                
-               </>
+              
             ))}
             <Polyline
             options={options}
             onDblClick={(e)=>onLoadPolyline(e)}
-      path={activityRoute}
+            path={activityRoute}
     />
             
             

@@ -9,7 +9,7 @@ const LogoutButton = ({setAuthenticated}) => {
     dispatch(logout())
   };
 
-  return <button className="form__button" onClick={onLogout}>Logout</button>;
+  return <button id="Logout-Button" onClick={onLogout}>Logout</button>;
 };
 
 export default LogoutButton;

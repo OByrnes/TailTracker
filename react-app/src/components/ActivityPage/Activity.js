@@ -57,7 +57,7 @@ const ActivityPage = () => {
             e.preventDefault()
             let activityForm = new FormData()
             activityForm.append('comment',comment)
-            let res = await fetch(`/api/activities/addcomment/${activity.id}`, {
+            let res = await fetch(`/api/activities/addcomment/${activity.id}/`, {
                 method: "POST",
                 body: activityForm
             })
@@ -72,7 +72,7 @@ const ActivityPage = () => {
         }
         
         const deleteActivity = async () =>{
-            let res = await fetch(`/api/activities/delete/${activity.id}`,{ method: 'DELETE' })
+            let res = await fetch(`/api/activities/delete/${activity.id}/`,{ method: 'DELETE' })
             if (res.ok){
                 history.push("/")
             }
@@ -130,10 +130,10 @@ const ActivityPage = () => {
 
                         <span>{new Date(activity.date).toLocaleString()}</span>
                         <span>{activity.minutes} Minutes</span>
-                        {route? <div>
+                        {route? <NavLink to={`/routes/${route.id}`}><div>
                             <span>{route.name}  </span>
                             <span>{route.distance.toFixed(2)} Miles</span>
-                            </div>:null}
+                            </div></NavLink>:null}
                         <span>{activity.activityType.type}</span>
                         <span>Points {Math.floor(activity.minutes*activity.activityType.exertion/6)}</span>
                         {activity.comment?<span>{activity.comment}</span>:<div className="form__container">

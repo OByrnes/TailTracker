@@ -44,8 +44,8 @@ const RoutePage = () => {
         googleMapsApiKey: process.env.REACT_APP_MAPS_KEY
       })
       const containerStyle = {
-        width: '400px',
-        height: '400px'
+        width: '800px',
+        height: '800px'
       };
       let center;
       if (lat !== 0){
@@ -77,13 +77,13 @@ const RoutePage = () => {
       };
     
     return (
-        <div className="home_page__container">
-            <div>
+        <div className="home_page__container route_page">
+            <div className="route_page__header">
                 <h2>{selectedRoute?.name}</h2>
                 <span>{selectedRoute?.distance.toFixed(2)} Miles</span>
             </div>
             <div>
-            {lat > 0 && currentPosition ?<GoogleMap
+            {(lat > 0 && currentPosition) ?<GoogleMap
           mapContainerStyle={containerStyle}
           zoom={15}
           center={center}

@@ -25,31 +25,61 @@ background-color: #50514f;
 .last{
   margin-bottom: 30px;
 }
-.closeDD{
-  display: flex;
-  align-items: right;
+@keyframes tailwag {
+  0% {background-image: url("../../images/TTLogo1png.png");}
+  25% {background-image: url("../../images/logoTTL.png");}
+  50% {background-image: url("../../images/TTLogo1png.png");}
+  75% {background-image: url("../../images/logoTTR.png");}
+  100% {background-image: url("../../images/TTLogo1png.png");}
   
+}
+#logo{
+  background-image: url('../../images/TTLogo1png.png');
+  height: 90px;
+  width: 90px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 90px 90px;
+}
+#logo:hover{
+  animation-name: tailwag;
+  animation-duration: 4s;
 }
 
 .DropDown__container{
   position: absolute;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  
   flex-direction: column;
   background-color: white;
   width: 200px;
-  height: 500px;
+  
   top: 200px;
   left:100px;
 }
 .DropDown__container div{
   border-bottom: solid 2px #50514f;
-  height: 25%;
+  height: 60px;
   width: 100%;
-
+  margin:0;
+  font-weight: bold;
+  font-size: 25px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 .DropDown__container div:hover{
   background-color: #4986a0af;
-
+  
+}
+.closeDD{
+  border-bottom:none;
+  display: flex;
+}
+.closeDD span{
+  position:absolute;
+  right:10px;
+  justify-self: flex-start;
+  align-self: flex-start;
 }
